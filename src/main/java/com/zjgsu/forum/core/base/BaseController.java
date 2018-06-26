@@ -14,4 +14,15 @@ public class BaseController {
     @Autowired
     private SiteConfig siteConfig;
 
+    /**
+     * 带参重定向
+     * @param path
+     * @return
+     */
+    protected String redirect(String path){
+        String baseUrl = siteConfig.getBaseUrl();
+        baseUrl = baseUrl.substring(0,baseUrl.length()-1);
+        return "redirect:" + baseUrl + path;
+    }
+
 }
