@@ -1,19 +1,22 @@
 server:
-  port: 8082
+  port: 8080
 spring:
   application:
-    name: forum
+    name: YIIU
   resources:
     static-locations:
-    -classpath:/${site.theme}/static/
-    -file:./resources/${site.theme}/static/
+    - classpath:/${site.theme}/static/
+    - file:./views/${site.theme}/static/
   freemarker:
     template-loader-path:
-    -classpath:/${site.theme}/templates/
-    -file:./resources/${site.theme}/templates/
+    - classpath:/${site.theme}/templates/
+    - file:./views/${site.theme}/templates/
     cache: false
+    settings:
+      template_exception_handler: rethrow
+      number_format: 0.##
   datasource:
-    url: jdbc:mysql://localhost/forum?useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://localhost/yiiu?useSSL=false&characterEncoding=utf8
     username: root
     password: root
   jpa:
@@ -22,94 +25,98 @@ spring:
     hibernate:
       ddl-auto: update
     properties:
-      hibernate.formate_sql: true
+      hibernate.format_sql: true
     open-in-view: false
-
-#  redis:
+#  redis: # å¦‚æœrediséƒ½æ˜¯é»˜è®¤é…ç½®ï¼Œä¸‹é¢è¿™äº›éƒ½å¯ä»¥ä¸ç”¨é…ç½®
 #    host: localhost
 #    password:
 #    port: 6379
 #    ssl: false
 #    database: 0
-
   mail:
     host: smtp.qq.com
-    username:
-    password: #ÕâÀïÊÇQQÓÊÏäµÄÊÚÈ¨Âë
+    username: xxoo@qq.com
+    password: # è¿™é‡Œçš„å¯†ç æ˜¯QQé‚®ç®±çš„æˆæƒç 
     port: 465
     properties:
       mail.smtp.auth: true
       mail.smtp.ssl.enable: true
       mail.smtp.starttls.enable: true
       mail.smtp.starttls.required: true
+  servlet:
+    multipart:
+      max-file-size: 2MB
   data:
-  elasticsearch:
-    cluster-name: elasticsearch
-    cluster-nodes: 127.0.0.1:9300
+    elasticsearch:
+      cluster-name: elasticsearch #é»˜è®¤ä¸ºelasticsearch
+      cluster-nodes: 127.0.0.1:9300 #é…ç½®esèŠ‚ç‚¹ä¿¡æ¯ï¼Œé€—å·åˆ†éš”ï¼Œå¦‚æœæ²¡æœ‰æŒ‡å®šï¼Œåˆ™å¯åŠ¨ClientNode
+
 site:
-  name: forum
-  intro: <h5>bootstrap¼òÒ×ÂÛÌ³</h5>
-  baseUrl: http://localhost:8082/
-  staticUrl: http://localhost:8082/static/upload/
+  name: open8200
+  intro: <h5>open8200è®ºå›</h5><p>åœ¨è¿™é‡Œï¼Œæ‚¨å¯ä»¥æé—®ï¼Œå›ç­”ï¼Œåˆ†äº«å„ç§open8200é‡åˆ°çš„é—®é¢˜ï¼Œåœ¨çº¿åé¦ˆé—®é¢˜ï¼Œæœç´¢ç›¸åŒæˆ–ç›¸ä¼¼é—®é¢˜çš„è§£å†³æ–¹æ³•ï¼Œæ¬¢è¿æ‚¨çš„åŠ å…¥ï¼</p>
+  baseUrl: http://localhost:8080/ # ä¸è¦å¿˜äº†åé¢çš„ '/'
+  staticUrl: http://localhost:8080/static/images/upload/
   pageSize: 20
-  uploadPath: ./resources/${site.theme}/static/upload/
+  uploadPath: ./views/${site.theme}/static/images/upload/
   theme: default
+  search: true
   GA: #Google Analytics ID
-  googleZZ: # googleÕ¾³¤meta±êÇ©contentÖµ
-  baiduTJ: # °Ù¶ÈÍ³¼ÆID
-  baiduZZ: # °Ù¶ÈÕ¾³¤meta±êÇ©contentÖµ
+  googleZZ: # googleç«™é•¿metaæ ‡ç­¾contentå€¼
+  baiduTJ: # ç™¾åº¦ç»Ÿè®¡ID
+  baiduZZ: # ç™¾åº¦ç«™é•¿metaæ ‡ç­¾contentå€¼
   uploadType: local # local, qiniu
   cookie:
     domain: localhost
     userName: remember-me
-    userMaxAge: 30
+    userMaxAge: 30 # å¤©
     adminUserName: admin-remember-me
-    adminMaxAge: 30
+    adminUserMaxAge: 30 # å¤©
   upload:
     qiniu:
-      accessKey: # ÆßÅ£¿ª·¢ÕßÉÏ´«µÄkey
-      secretKey: # ÆßÅ£¿ª·¢ÕßÉÏ´«µÄÃÜÔ¿
-      bucket: # ´´½¨µÄ´æ´¢¿Õ¼äÃû³Æ
-      domain: # ´æ´¢¿Õ¼äÓòÃû
+      accessKey: # ä¸ƒç‰›å¼€å‘è€…ä¸Šä¼ çš„key
+      secretKey: # ä¸ƒç‰›å¼€å‘è€…ä¸Šä¼ çš„å¯†é’¥
+      bucket: # åˆ›å»ºçš„å­˜å‚¨ç©ºé—´åç§°
+      domain: # å­˜å‚¨ç©ºé—´åŸŸå
   oauth2:
-      github:
-        clientId: # githubÉêÇëÓ¦ÓÃµÄClientId
-        clientSecret: # ¶ÔÓ¦µÄÃÜÔ¿
-        callbackUrl: ${site.baseUrl}/oauth2/github/callback
+    github:
+      clientId: # githubç”³è¯·åº”ç”¨çš„ClientId
+      clientSecret: # å¯¹åº”çš„å¯†é’¥
+      callbackUrl: ${site.baseUrl}/oauth2/github/callback
+
 mail:
   register:
-    subject: ×¢²áÑéÖ¤Âë - ${site.name}
-        content: |
-          <p>ÄúºÃ</p>
-          <p>&nbsp;&nbsp;ÄúµÄÑéÖ¤ÂëÎª <span style='color: red;'>$\{genCode!}</span> , ÇëÔÚ10·ÖÖÓÄÚÊ¹ÓÃ£¡</p><br>
-          <small>±¾ÓÊ¼şÎªÏµÍ³·¢³ö£¬Çë²»Òª»Ø¸´</small>
-    commentTopic:
-        subject: »°Ìâ±»ÆÀÂÛ - ${site.name}
-        content: |
-          <p>ÄúºÃ</p>
-          <p>&nbsp;&nbsp;$\{username!} ÆÀÂÛÁËÄúµÄ»°Ìâ <a href='$\{domain!}topic/$\{topic.id}'>$\{topic.title!}</a></p>
-          <div style='background-color: #fffbc1; padding: 20px; border-radius: 5px;'>$\{content!}</div><br>
-          <small>±¾ÓÊ¼şÎªÏµÍ³·¢³ö£¬Çë²»Òª»Ø¸´</small>
-    replyComment:
-        subject: ÆÀÂÛ±»»Ø¸´ - ${site.name}
-        content: |
-          <p>ÄúºÃ</p>
-          <p>&nbsp;&nbsp;$\{username!} »Ø¸´ÁËÄúÔÚ»°Ìâ <a href='$\{domain!}topic/$\{topic.id}'>$\{topic.title!}</a> ÏÂµÄÆÀÂÛ</p>
-          <div style='background-color: #fffbc1; padding: 20px; border-radius: 5px;'>$\{content!}</div><br>
-          <small>±¾ÓÊ¼şÎªÏµÍ³·¢³ö£¬Çë²»Òª»Ø¸´</small>
+    subject: æ³¨å†ŒéªŒè¯ç  - ${site.name}
+    content: |
+      <p>æ‚¨å¥½</p>
+      <p>&nbsp;&nbsp;æ‚¨çš„éªŒè¯ç ä¸º <span style='color: red;'>$\{genCode!}</span> , è¯·åœ¨10åˆ†é’Ÿå†…ä½¿ç”¨ï¼</p><br>
+      <small>æœ¬é‚®ä»¶ä¸ºç³»ç»Ÿå‘å‡ºï¼Œè¯·ä¸è¦å›å¤</small>
+  commentTopic:
+    subject: è¯é¢˜è¢«è¯„è®º - ${site.name}
+    content: |
+      <p>æ‚¨å¥½</p>
+      <p>&nbsp;&nbsp;$\{username!} è¯„è®ºäº†æ‚¨çš„è¯é¢˜ <a href='$\{domain!}topic/$\{topic.id}'>$\{topic.title!}</a></p>
+      <div style='background-color: #fffbc1; padding: 20px; border-radius: 5px;'>$\{content!}</div><br>
+      <small>æœ¬é‚®ä»¶ä¸ºç³»ç»Ÿå‘å‡ºï¼Œè¯·ä¸è¦å›å¤</small>
+  replyComment:
+    subject: è¯„è®ºè¢«å›å¤ - ${site.name}
+    content: |
+      <p>æ‚¨å¥½</p>
+      <p>&nbsp;&nbsp;$\{username!} å›å¤äº†æ‚¨åœ¨è¯é¢˜ <a href='$\{domain!}topic/$\{topic.id}'>$\{topic.title!}</a> ä¸‹çš„è¯„è®º</p>
+      <div style='background-color: #fffbc1; padding: 20px; border-radius: 5px;'>$\{content!}</div><br>
+      <small>æœ¬é‚®ä»¶ä¸ºç³»ç»Ÿå‘å‡ºï¼Œè¯·ä¸è¦å›å¤</small>
 
 log:
   template:
-    createTopic: ´´½¨»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
-    commentTopic: ÆÀÂÛ»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
-    replyComment: »Ø¸´»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ÏÂµÄÆÀÂÛ
-    editTopic: ±à¼­»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
-    deleteTopic: É¾³ı»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
-    collectTopic: ÊÕ²Ø»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
-    deleteCollectTopic: É¾³ıÊÕ²ØµÄ»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
-    editComment: ±à¼­»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ÏÂµÄÆÀÂÛ
-    deleteComment: É¾³ı»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ÏÂµÄÆÀÂÛ
-    upTopic: ¸ø»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> µãÔŞ
-    downTopic: ¸ø»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> µã²È
-    upComment: ¸ø»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ÏÂµÄÆÀÂÛµãÔŞ
-    downComment: ¸ø»°Ìâ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ÏÂµÄÆÀÂÛµã²È
+    createTopic: åˆ›å»ºè¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
+    commentTopic: è¯„è®ºè¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
+    replyComment: å›å¤è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ä¸‹çš„è¯„è®º
+    editTopic: ç¼–è¾‘è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
+    deleteTopic: åˆ é™¤è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
+    collectTopic: æ”¶è—è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
+    deleteCollectTopic: åˆ é™¤æ”¶è—çš„è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a>
+    editComment: ç¼–è¾‘è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ä¸‹çš„è¯„è®º
+    deleteComment: åˆ é™¤è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ä¸‹çš„è¯„è®º
+    upTopic: ç»™è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ç‚¹èµ
+    downTopic: ç»™è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ç‚¹è¸©
+    upComment: ç»™è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ä¸‹çš„è¯„è®ºç‚¹èµ
+    downComment: ç»™è¯é¢˜ <a href='/topic/$\{topic.id}' target='_blank'>$\{topic.title}</a> ä¸‹çš„è¯„è®ºç‚¹è¸©
