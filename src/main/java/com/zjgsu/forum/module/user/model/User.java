@@ -48,4 +48,15 @@ public class User implements Serializable {
     @JsonFormat(pattern = Constants.DATETIME_FORMAT)
     private Date inTime;
 
+    private Boolean block;
+
+    private String token;
+
+    @Column(columnDefinition = "INT DEFAULT 0")
+    private Integer reputation;
+
+    private Boolean commentEmail;
+
+    private Boolean replyEmail;
+
 }
