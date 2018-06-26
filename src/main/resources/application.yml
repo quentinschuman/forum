@@ -2,21 +2,21 @@ server:
   port: 8080
 spring:
   application:
-    name: YIIU
+    name: FORUM
   resources:
     static-locations:
     - classpath:/${site.theme}/static/
-    - file:./views/${site.theme}/static/
+    - file:./resources/${site.theme}/static/
   freemarker:
     template-loader-path:
     - classpath:/${site.theme}/templates/
-    - file:./views/${site.theme}/templates/
+    - file:./resources/${site.theme}/templates/
     cache: false
     settings:
       template_exception_handler: rethrow
       number_format: 0.##
   datasource:
-    url: jdbc:mysql://localhost/yiiu?useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://localhost/forum?useSSL=false&characterEncoding=utf8
     username: root
     password: root
   jpa:
@@ -52,12 +52,12 @@ spring:
       cluster-nodes: 127.0.0.1:9300 #配置es节点信息，逗号分隔，如果没有指定，则启动ClientNode
 
 site:
-  name: open8200
-  intro: <h5>open8200论坛</h5><p>在这里，您可以提问，回答，分享各种open8200遇到的问题，在线反馈问题，搜索相同或相似问题的解决方法，欢迎您的加入！</p>
+  name: FORUM
+  intro: <h5>bootstrap简易论坛</h5>
   baseUrl: http://localhost:8080/ # 不要忘了后面的 '/'
   staticUrl: http://localhost:8080/static/images/upload/
   pageSize: 20
-  uploadPath: ./views/${site.theme}/static/images/upload/
+  uploadPath: ./resources/${site.theme}/static/images/upload/
   theme: default
   search: true
   GA: #Google Analytics ID
