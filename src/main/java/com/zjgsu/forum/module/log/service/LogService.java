@@ -8,4 +8,6 @@ package com.zjgsu.forum.module.log.service;
  * Time: 22:50
  */
 public class LogService {
+    public void deleteByUserId(Integer id) {
+    }
 }

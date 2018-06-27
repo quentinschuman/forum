@@ -21,6 +21,7 @@ import org.springframework.util.StringUtils;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -93,5 +94,46 @@ public class UserService {
         ValueOperations<String,String> stringStringValueOperations = stringRedisTemplate.opsForValue();
         stringStringValueOperations.set(user.getToken(), JsonUtil.objectToJson(user));
         return user;
+    }
+
+    public Page<User> pageUser(int p,int size){
+        Sort sort = new Sort(Sort.Direction.DESC,"inTime");
+        Pageable pageable = PageRequest.of(p-1,size,sort);
+        return userRepository.findAll(pageable);
+    }
+
+    public void blockUser(Integer id){
+        User user = findById(id);
+        user.setBlock(true);
+        save(user);
+    }
+
+    public void unBlockUser(Integer id){
+        User user = findById(id);
+        user.setBlock(false);
+        save(user);
+    }
+
+    public User refreshToken(User user){
+        user.setToken(UUID.randomUUID().toString());
+        return this.save(user);
+    }
+
+    public User findByToken(String token){
+        return userRepository.findByToken(token);
+    }
+
+    public void deleteById(Integer id){
+        logService.deleteByUserId(id);
+        notificationService.deleteByTargetUser(id);
+        collectService.deleteByUserId(id);
+        commentService.deleteByUserId(id);
+        topicService.deleteByUserId(id);
+        userRepository.deleteById(id);
+    }
+
+    public void deleteAllRedisUser(){
+        List<User> users = userRepository.findAll();
+        users.forEach(user -> stringRedisTemplate.delete(user.getToken()));
     }
 }

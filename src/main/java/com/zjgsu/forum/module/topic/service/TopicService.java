@@ -8,4 +8,6 @@ package com.zjgsu.forum.module.topic.service;
  * Time: 22:51
  */
 public class TopicService {
+    public void deleteByUserId(Integer id) {
+    }
 }

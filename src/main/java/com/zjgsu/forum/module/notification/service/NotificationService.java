@@ -8,4 +8,6 @@ package com.zjgsu.forum.module.notification.service;
  * Time: 22:54
  */
 public class NotificationService {
+    public void deleteByTargetUser(Integer id) {
+    }
 }

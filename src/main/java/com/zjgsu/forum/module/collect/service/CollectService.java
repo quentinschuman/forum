@@ -8,4 +8,6 @@ package com.zjgsu.forum.module.collect.service;
  * Time: 22:53
  */
 public class CollectService {
+    public void deleteByUserId(Integer id) {
+    }
 }

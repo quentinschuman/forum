@@ -8,4 +8,6 @@ package com.zjgsu.forum.module.comment.service;
  * Time: 22:52
  */
 public class CommentService {
+    public void deleteByUserId(Integer id) {
+    }
 }
