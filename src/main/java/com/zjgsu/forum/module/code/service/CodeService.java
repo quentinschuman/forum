@@ -23,7 +23,7 @@ public class CodeService {
     private CodeRepository codeRepository;
 
     public Code findByEmailAndCodeAndType(String email, String code, CodeEnum type){
-        List<Code> codes = codeRepository.findByEmailAndCodeAndType(email,code,type);
+        List<Code> codes = codeRepository.findByEmailAndCodeAndType(email,code,type.name());
         if (codes.size() > 0)
             return codes.get(0);
         return null;
