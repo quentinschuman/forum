@@ -13,4 +13,12 @@ import java.util.List;
  */
 public interface TagRepository {
     List<Tag> findAll();
+
+    TypeToken<Object> findById(Integer id);
+
+    Tag save(Tag tag);
+
+    List<Tag> saveAll();
+
+    Tag findByName(String name);
 }
