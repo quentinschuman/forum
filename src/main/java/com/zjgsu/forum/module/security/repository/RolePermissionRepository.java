@@ -4,6 +4,8 @@ import com.zjgsu.forum.module.security.model.RolePermission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * ProjectName: forum
@@ -14,4 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RolePermissionRepository extends JpaRepository<RolePermission,Integer> {
     void deleteRoleId(Integer id);
+    void deleteByPermissionId(Integer permissionId);
+    List<RolePermission> findByRoleId(Integer roleId);
 }

@@ -26,9 +26,9 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
-    private RolePermissionRepository rolePermissionRepository;
+    private RolePermissionService rolePermissionService;
     @Autowired
-    private AdminUserRepository adminUserRepository;
+    private AdminUserService adminUserService;
 
     public Role findById(Integer id){
         return roleRepository.findById(id).get();
@@ -45,7 +45,7 @@ public class RoleService {
         }
         role.setName(name);
         role = roleRepository.save(role);
-        rolePermissionRepository.deleteRoleId(role.getId());
+        rolePermissionService.deleteRoleId(role.getId());
         if (permissionIds.length > 0){
             List<RolePermission> list = new ArrayList<>();
             for (Integer permissionId : permissionIds){
