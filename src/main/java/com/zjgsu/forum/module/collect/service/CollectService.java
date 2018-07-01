@@ -3,7 +3,10 @@ package com.zjgsu.forum.module.collect.service;
 import com.zjgsu.forum.core.util.JsonUtil;
 import com.zjgsu.forum.module.collect.model.Collect;
 import com.zjgsu.forum.module.collect.repository.CollectRepository;
+import com.zjgsu.forum.module.log.model.LogEventEnum;
+import com.zjgsu.forum.module.log.model.LogTargetEnum;
 import com.zjgsu.forum.module.log.service.LogService;
+import com.zjgsu.forum.module.notification.model.NotificationEnum;
 import com.zjgsu.forum.module.notification.service.NotificationService;
 import com.zjgsu.forum.module.topic.model.Topic;
 import com.zjgsu.forum.module.topic.service.TopicService;
@@ -70,7 +73,7 @@ public class CollectService {
         if (!topic.getUserId().equals(userId)) {
             notificationService.sendNotification(userId, topic.getUserId(), NotificationEnum.COLLECT, topic.getId(), null);
         }
-            logService.save(LogEventEnum.COLLECT_TOPIC,collect.getUserId(),LogTargetEnum.COLLECT.name(),collect.getId(),null, JsonUtil.objectToJson(collect),topic);
+            logService.save(LogEventEnum.COLLECT_TOPIC,collect.getUserId(), LogTargetEnum.COLLECT.name(),collect.getId(),null, JsonUtil.objectToJson(collect),topic);
             return collect;
     }
 

@@ -29,7 +29,7 @@ public interface NotificationRepository extends JpaRepository<Notification,Integ
     @Modifying
     @Query("update Notification n set n.isRead = true where n.targetUserId = ?1")
     void updateByIsRead(Integer targetUserId);
-    void deleteByIsRead(Integer userId);
     void deleteByUserId(Integer userId);
     void deleteByTopicId(Integer topicId);
+    void deleteByTargetUserId(Integer userId);
 }
