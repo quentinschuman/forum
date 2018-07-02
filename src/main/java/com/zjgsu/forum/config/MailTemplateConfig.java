@@ -5,21 +5,18 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
- * ProjectName: forum
- * User: quent
- * Date: 2018/7/1
- * Time: 10:28
+ * Created by qianshu on 2018/7/2.
  */
 @Configuration
-@ConfigurationProperties(prefix = "log")
+@ConfigurationProperties(prefix = "mail")
 @Getter
 @Setter
-public class LogEventConfig {
+public class MailTemplateConfig {
 
-    private Map<String,String> template = new HashMap<>();
+    Map<String,Object> register;
+    Map<String,Object> commentTopic;
+    Map<String,Object> replyComment;
 }

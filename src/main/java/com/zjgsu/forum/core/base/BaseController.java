@@ -1,6 +1,9 @@
 package com.zjgsu.forum.core.base;
 
 import com.zjgsu.forum.config.SiteConfig;
+import com.zjgsu.forum.core.exception.ApiAssert;
+import com.zjgsu.forum.module.security.model.AdminUser;
+import com.zjgsu.forum.module.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -23,6 +26,20 @@ public class BaseController {
         String baseUrl = siteConfig.getBaseUrl();
         baseUrl = baseUrl.substring(0,baseUrl.length()-1);
         return "redirect:" + baseUrl + path;
+    }
+
+    protected User getUser(){
+        return BaseEntity.getUser();
+    }
+
+    protected AdminUser getAdminUser(){
+        return baseEntity.getAdminUser();
+    }
+
+    protected User getApiUser(){
+        User user = baseEntity.getUser();
+        ApiAssert.notNull(user,"请先登录");
+        return user;
     }
 
 }
