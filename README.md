@@ -3,21 +3,21 @@
 
 
 
-# ===================================================================
-# COMMON SPRING BOOT PROPERTIES
-#
-# This sample file is provided as a guideline. Do NOT copy it in its
-# entirety to your own application.               ^^^
-# ===================================================================
+##### ===================================================================
+##### COMMON SPRING BOOT PROPERTIES
+#####
+##### This sample file is provided as a guideline. Do NOT copy it in its
+##### entirety to your own application.               ^^^
+##### ===================================================================
 
 
-# ----------------------------------------
-# CORE PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### CORE PROPERTIES
+##### ----------------------------------------
 debug=false # Enable debug logs.
 trace=false # Enable trace logs.
 
-# LOGGING
+##### LOGGING
 logging.config= # Location of the logging configuration file. For instance, `classpath:logback.xml` for Logback.
 logging.exception-conversion-word=%wEx # Conversion word used when logging exceptions.
 logging.file= # Log file name (for instance, `myapp.log`). Names can be an exact location or relative to the current directory.
@@ -31,21 +31,21 @@ logging.pattern.file= # Appender pattern for output to a file. Supported only wi
 logging.pattern.level=%5p # Appender pattern for log level. Supported only with the default Logback setup.
 logging.register-shutdown-hook=false # Register a shutdown hook for the logging system when it is initialized.
 
-# AOP
+##### AOP
 spring.aop.auto=true # Add @EnableAspectJAutoProxy.
 spring.aop.proxy-target-class=true # Whether subclass-based (CGLIB) proxies are to be created (true), as opposed to standard Java interface-based proxies (false).
 
-# IDENTITY (ContextIdApplicationContextInitializer)
+##### IDENTITY (ContextIdApplicationContextInitializer)
 spring.application.name= # Application name.
 
-# ADMIN (SpringApplicationAdminJmxAutoConfiguration)
+##### ADMIN (SpringApplicationAdminJmxAutoConfiguration)
 spring.application.admin.enabled=false # Whether to enable admin features for the application.
 spring.application.admin.jmx-name=org.springframework.boot:type=Admin,name=SpringApplication # JMX name of the application admin MBean.
 
-# AUTO-CONFIGURATION
+##### AUTO-CONFIGURATION
 spring.autoconfigure.exclude= # Auto-configuration classes to exclude.
 
-# BANNER
+##### BANNER
 spring.banner.charset=UTF-8 # Banner file encoding.
 spring.banner.location=classpath:banner.txt # Banner text resource location.
 spring.banner.image.location=classpath:banner.gif # Banner image file location (jpg or png can also be used).
@@ -54,10 +54,10 @@ spring.banner.image.height= # Height of the banner image in chars (default based
 spring.banner.image.margin=2 # Left hand image margin in chars.
 spring.banner.image.invert=false # Whether images should be inverted for dark terminal themes.
 
-# SPRING CORE
+##### SPRING CORE
 spring.beaninfo.ignore=true # Whether to skip search of BeanInfo classes.
 
-# SPRING CACHE (CacheProperties)
+##### SPRING CACHE (CacheProperties)
 spring.cache.cache-names= # Comma-separated list of cache names to create if supported by the underlying cache manager.
 spring.cache.caffeine.spec= # The spec to use to create caches. See CaffeineSpec for more details on the spec format.
 spring.cache.couchbase.expiration=0ms # Entry expiration. By default the entries never expire. Note that this value is ultimately converted to seconds.
@@ -71,24 +71,24 @@ spring.cache.redis.time-to-live=0ms # Entry expiration. By default the entries n
 spring.cache.redis.use-key-prefix=true # Whether to use the key prefix when writing to Redis.
 spring.cache.type= # Cache type. By default, auto-detected according to the environment.
 
-# SPRING CONFIG - using environment property only (ConfigFileApplicationListener)
+##### SPRING CONFIG - using environment property only (ConfigFileApplicationListener)
 spring.config.additional-location= # Config file locations used in addition to the defaults.
 spring.config.location= # Config file locations that replace the defaults.
 spring.config.name=application # Config file name.
 
-# HAZELCAST (HazelcastProperties)
+##### HAZELCAST (HazelcastProperties)
 spring.hazelcast.config= # The location of the configuration file to use to initialize Hazelcast.
 
-# PROJECT INFORMATION (ProjectInfoProperties)
+##### PROJECT INFORMATION (ProjectInfoProperties)
 spring.info.build.location=classpath:META-INF/build-info.properties # Location of the generated build-info.properties file.
 spring.info.git.location=classpath:git.properties # Location of the generated git.properties file.
 
-# JMX
+##### JMX
 spring.jmx.default-domain= # JMX domain name.
 spring.jmx.enabled=true # Expose management beans to the JMX domain.
 spring.jmx.server=mbeanServer # MBeanServer bean name.
 
-# Email (MailProperties)
+##### Email (MailProperties)
 spring.mail.default-encoding=UTF-8 # Default MimeMessage encoding.
 spring.mail.host= # SMTP server host. For instance, `smtp.example.com`.
 spring.mail.jndi-name= # Session JNDI name. When set, takes precedence over other Session settings.
@@ -99,15 +99,15 @@ spring.mail.protocol=smtp # Protocol used by the SMTP server.
 spring.mail.test-connection=false # Whether to test that the mail server is available on startup.
 spring.mail.username= # Login user of the SMTP server.
 
-# APPLICATION SETTINGS (SpringApplication)
+##### APPLICATION SETTINGS (SpringApplication)
 spring.main.banner-mode=console # Mode used to display the banner when the application runs.
 spring.main.sources= # Sources (class names, package names, or XML resource locations) to include in the ApplicationContext.
 spring.main.web-application-type= # Flag to explicitly request a specific type of web application. If not set, auto-detected based on the classpath.
 
-# FILE ENCODING (FileEncodingApplicationListener)
+##### FILE ENCODING (FileEncodingApplicationListener)
 spring.mandatory-file-encoding= # Expected character encoding the application must use.
 
-# INTERNATIONALIZATION (MessageSourceProperties)
+##### INTERNATIONALIZATION (MessageSourceProperties)
 spring.messages.always-use-message-format=false # Whether to always apply the MessageFormat rules, parsing even messages without arguments.
 spring.messages.basename=messages # Comma-separated list of basenames (essentially a fully-qualified classpath location), each following the ResourceBundle convention with relaxed support for slash based locations.
 spring.messages.cache-duration= # Loaded resource bundle files cache duration. When not set, bundles are cached forever. If a duration suffix is not specified, seconds will be used.
@@ -115,38 +115,38 @@ spring.messages.encoding=UTF-8 # Message bundles encoding.
 spring.messages.fallback-to-system-locale=true # Whether to fall back to the system Locale if no files for a specific Locale have been found.
 spring.messages.use-code-as-default-message=false # Whether to use the message code as the default message instead of throwing a "NoSuchMessageException". Recommended during development only.
 
-# OUTPUT
+##### OUTPUT
 spring.output.ansi.enabled=detect # Configures the ANSI output.
 
-# PID FILE (ApplicationPidFileWriter)
+##### PID FILE (ApplicationPidFileWriter)
 spring.pid.fail-on-write-error= # Fails if ApplicationPidFileWriter is used but it cannot write the PID file.
 spring.pid.file= # Location of the PID file to write (if ApplicationPidFileWriter is used).
 
-# PROFILES
+##### PROFILES
 spring.profiles.active= # Comma-separated list of active profiles. Can be overridden by a command line switch.
 spring.profiles.include= # Unconditionally activate the specified comma-separated list of profiles (or list of profiles if using YAML).
 
-# QUARTZ SCHEDULER (QuartzProperties)
+##### QUARTZ SCHEDULER (QuartzProperties)
 spring.quartz.jdbc.comment-prefix=-- # Prefix for single-line comments in SQL initialization scripts.
 spring.quartz.jdbc.initialize-schema=embedded # Database schema initialization mode.
 spring.quartz.jdbc.schema=classpath:org/quartz/impl/jdbcjobstore/tables_@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
 spring.quartz.job-store-type=memory # Quartz job store type.
 spring.quartz.properties.*= # Additional Quartz Scheduler properties.
 
-# REACTOR (ReactorCoreProperties)
+##### REACTOR (ReactorCoreProperties)
 spring.reactor.stacktrace-mode.enabled=false # Whether Reactor should collect stacktrace information at runtime.
 
-# SENDGRID (SendGridAutoConfiguration)
+##### SENDGRID (SendGridAutoConfiguration)
 spring.sendgrid.api-key= # SendGrid API key.
 spring.sendgrid.proxy.host= # SendGrid proxy host.
 spring.sendgrid.proxy.port= # SendGrid proxy port.
 
 
-# ----------------------------------------
-# WEB PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### WEB PROPERTIES
+##### ----------------------------------------
 
-# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+##### EMBEDDED SERVER CONFIGURATION (ServerProperties)
 server.address= # Network address to which the server should bind.
 server.compression.enabled=false # Whether response compression is enabled.
 server.compression.excluded-user-agents= # List of user-agents to exclude from compression.
@@ -257,7 +257,7 @@ server.undertow.eager-filter-init=true # Whether servlet filters should be initi
 server.undertow.max-http-post-size=0 # Maximum size, in bytes, of the HTTP post content.
 server.undertow.worker-threads= # Number of worker threads.
 
-# FREEMARKER (FreeMarkerProperties)
+##### FREEMARKER (FreeMarkerProperties)
 spring.freemarker.allow-request-override=false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.
 spring.freemarker.allow-session-override=false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.
 spring.freemarker.cache=false # Whether to enable template caching.
@@ -276,7 +276,7 @@ spring.freemarker.suffix=.ftl # Suffix that gets appended to view names when bui
 spring.freemarker.template-loader-path=classpath:/templates/ # Comma-separated list of template paths.
 spring.freemarker.view-names= # White list of view names that can be resolved.
 
-# GROOVY TEMPLATES (GroovyTemplateProperties)
+##### GROOVY TEMPLATES (GroovyTemplateProperties)
 spring.groovy.template.allow-request-override=false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.
 spring.groovy.template.allow-session-override=false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.
 spring.groovy.template.cache=false # Whether to enable template caching.
@@ -294,13 +294,13 @@ spring.groovy.template.resource-loader-path=classpath:/templates/ # Template pat
 spring.groovy.template.suffix=.tpl # Suffix that gets appended to view names when building a URL.
 spring.groovy.template.view-names= # White list of view names that can be resolved.
 
-# SPRING HATEOAS (HateoasProperties)
+##### SPRING HATEOAS (HateoasProperties)
 spring.hateoas.use-hal-as-default-json-media-type=true # Whether application/hal+json responses should be sent to requests that accept application/json.
 
-# HTTP message conversion
+##### HTTP message conversion
 spring.http.converters.preferred-json-mapper= # Preferred JSON mapper to use for HTTP message conversion. By default, auto-detected according to the environment.
 
-# HTTP encoding (HttpEncodingProperties)
+##### HTTP encoding (HttpEncodingProperties)
 spring.http.encoding.charset=UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly.
 spring.http.encoding.enabled=true # Whether to enable http encoding support.
 spring.http.encoding.force= # Whether to force the encoding to the configured charset on HTTP requests and responses.
@@ -308,7 +308,7 @@ spring.http.encoding.force-request= # Whether to force the encoding to the confi
 spring.http.encoding.force-response= # Whether to force the encoding to the configured charset on HTTP responses.
 spring.http.encoding.mapping= # Locale in which to encode mapping.
 
-# MULTIPART (MultipartProperties)
+##### MULTIPART (MultipartProperties)
 spring.servlet.multipart.enabled=true # Whether to enable support of multipart uploads.
 spring.servlet.multipart.file-size-threshold=0 # Threshold after which files are written to disk. Values can use the suffixes "MB" or "KB" to indicate megabytes or kilobytes, respectively.
 spring.servlet.multipart.location= # Intermediate location of uploaded files.
@@ -316,7 +316,7 @@ spring.servlet.multipart.max-file-size=1MB # Max file size. Values can use the s
 spring.servlet.multipart.max-request-size=10MB # Max request size. Values can use the suffixes "MB" or "KB" to indicate megabytes or kilobytes, respectively.
 spring.servlet.multipart.resolve-lazily=false # Whether to resolve the multipart request lazily at the time of file or parameter access.
 
-# JACKSON (JacksonProperties)
+##### JACKSON (JacksonProperties)
 spring.jackson.date-format= # Date format string or a fully-qualified date format class name. For instance, `yyyy-MM-dd HH:mm:ss`.
 spring.jackson.default-property-inclusion= # Controls the inclusion of properties during serialization. Configured with one of the values in Jackson's JsonInclude.Include enumeration.
 spring.jackson.deserialization.*= # Jackson on/off features that affect the way Java objects are deserialized.
@@ -329,7 +329,7 @@ spring.jackson.property-naming-strategy= # One of the constants on Jackson's Pro
 spring.jackson.serialization.*= # Jackson on/off features that affect the way Java objects are serialized.
 spring.jackson.time-zone= #  Time zone used when formatting dates. For instance, "America/Los_Angeles" or "GMT+10".
 
-# GSON (GsonProperties)
+##### GSON (GsonProperties)
 spring.gson.date-format= # Format to use when serializing Date objects.
 spring.gson.disable-html-escaping= # Whether to disable the escaping of HTML characters such as '<', '>', etc.
 spring.gson.disable-inner-class-serialization= # Whether to exclude inner classes during serialization.
@@ -342,14 +342,14 @@ spring.gson.long-serialization-policy= # Serialization policy for Long and long 
 spring.gson.pretty-printing= # Whether to output serialized JSON that fits in a page for pretty printing.
 spring.gson.serialize-nulls= # Whether to serialize null fields.
 
-# JERSEY (JerseyProperties)
+##### JERSEY (JerseyProperties)
 spring.jersey.application-path= # Path that serves as the base URI for the application. If specified, overrides the value of "@ApplicationPath".
 spring.jersey.filter.order=0 # Jersey filter chain order.
 spring.jersey.init.*= # Init parameters to pass to Jersey through the servlet or filter.
 spring.jersey.servlet.load-on-startup=-1 # Load on startup priority of the Jersey servlet.
 spring.jersey.type=servlet # Jersey integration type.
 
-# SPRING LDAP (LdapProperties)
+##### SPRING LDAP (LdapProperties)
 spring.ldap.anonymous-read-only=false # Whether read-only operations should use an anonymous environment.
 spring.ldap.base= # Base suffix from which all operations should originate.
 spring.ldap.base-environment.*= # LDAP specification settings.
@@ -357,7 +357,7 @@ spring.ldap.password= # Login password of the server.
 spring.ldap.urls= # LDAP URLs of the server.
 spring.ldap.username= # Login username of the server.
 
-# EMBEDDED LDAP (EmbeddedLdapProperties)
+##### EMBEDDED LDAP (EmbeddedLdapProperties)
 spring.ldap.embedded.base-dn= # List of base DNs.
 spring.ldap.embedded.credential.username= # Embedded LDAP username.
 spring.ldap.embedded.credential.password= # Embedded LDAP password.
@@ -366,7 +366,7 @@ spring.ldap.embedded.port=0 # Embedded LDAP port.
 spring.ldap.embedded.validation.enabled=true # Whether to enable LDAP schema validation.
 spring.ldap.embedded.validation.schema= # Path to the custom schema.
 
-# MUSTACHE TEMPLATES (MustacheAutoConfiguration)
+##### MUSTACHE TEMPLATES (MustacheAutoConfiguration)
 spring.mustache.allow-request-override=false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.
 spring.mustache.allow-session-override=false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.
 spring.mustache.cache=false # Whether to enable template caching.
@@ -382,7 +382,7 @@ spring.mustache.request-context-attribute= # Name of the RequestContext attribut
 spring.mustache.suffix=.mustache # Suffix to apply to template names.
 spring.mustache.view-names= # White list of view names that can be resolved.
 
-# SPRING MVC (WebMvcProperties)
+##### SPRING MVC (WebMvcProperties)
 spring.mvc.async.request-timeout= # Amount of time before asynchronous request handling times out.
 spring.mvc.contentnegotiation.favor-parameter=false # Whether a request parameter ("format" by default) should be used to determine the requested media type.
 spring.mvc.contentnegotiation.favor-path-extension=false # Whether the path extension in the URL path should be used to determine the requested media type.
@@ -406,7 +406,7 @@ spring.mvc.throw-exception-if-no-handler-found=false # Whether a "NoHandlerFound
 spring.mvc.view.prefix= # Spring MVC view prefix.
 spring.mvc.view.suffix= # Spring MVC view suffix.
 
-# SPRING RESOURCES HANDLING (ResourceProperties)
+##### SPRING RESOURCES HANDLING (ResourceProperties)
 spring.resources.add-mappings=true # Whether to enable default resource handling.
 spring.resources.cache.cachecontrol.cache-private= # Indicate that the response message is intended for a single user and must not be stored by a shared cache.
 spring.resources.cache.cachecontrol.cache-public= # Indicate that any cache may store the response.
@@ -431,31 +431,31 @@ spring.resources.chain.strategy.fixed.paths=/** # Comma-separated list of patter
 spring.resources.chain.strategy.fixed.version= # Version string to use for the fixed Version Strategy.
 spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ # Locations of static resources.
 
-# SPRING SESSION (SessionProperties)
+##### SPRING SESSION (SessionProperties)
 spring.session.store-type= # Session store type.
 spring.session.timeout= # Session timeout. If a duration suffix is not specified, seconds will be used.
 spring.session.servlet.filter-order=-2147483598 # Session repository filter order.
 spring.session.servlet.filter-dispatcher-types=async,error,request # Session repository filter dispatcher types.
 
-# SPRING SESSION HAZELCAST (HazelcastSessionProperties)
+##### SPRING SESSION HAZELCAST (HazelcastSessionProperties)
 spring.session.hazelcast.flush-mode=on-save # Sessions flush mode.
 spring.session.hazelcast.map-name=spring:session:sessions # Name of the map used to store sessions.
 
-# SPRING SESSION JDBC (JdbcSessionProperties)
+##### SPRING SESSION JDBC (JdbcSessionProperties)
 spring.session.jdbc.cleanup-cron=0 * * * * * # Cron expression for expired session cleanup job.
 spring.session.jdbc.initialize-schema=embedded # Database schema initialization mode.
 spring.session.jdbc.schema=classpath:org/springframework/session/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
 spring.session.jdbc.table-name=SPRING_SESSION # Name of the database table used to store sessions.
 
-# SPRING SESSION MONGODB (MongoSessionProperties)
+##### SPRING SESSION MONGODB (MongoSessionProperties)
 spring.session.mongodb.collection-name=sessions # Collection name used to store sessions.
 
-# SPRING SESSION REDIS (RedisSessionProperties)
+##### SPRING SESSION REDIS (RedisSessionProperties)
 spring.session.redis.cleanup-cron=0 * * * * * # Cron expression for expired session cleanup job.
 spring.session.redis.flush-mode=on-save # Sessions flush mode.
 spring.session.redis.namespace=spring:session # Namespace for keys used to store sessions.
 
-# THYMELEAF (ThymeleafAutoConfiguration)
+##### THYMELEAF (ThymeleafAutoConfiguration)
 spring.thymeleaf.cache=true # Whether to enable template caching.
 spring.thymeleaf.check-template=true # Whether to check that the template exists before rendering it.
 spring.thymeleaf.check-template-location=true # Whether to check that the templates location exists.
@@ -474,11 +474,11 @@ spring.thymeleaf.suffix=.html # Suffix that gets appended to view names when bui
 spring.thymeleaf.template-resolver-order= # Order of the template resolver in the chain.
 spring.thymeleaf.view-names= # Comma-separated list of view names (patterns allowed) that can be resolved.
 
-# SPRING WEBFLUX (WebFluxProperties)
+##### SPRING WEBFLUX (WebFluxProperties)
 spring.webflux.date-format= # Date format to use. For instance, `dd/MM/yyyy`.
 spring.webflux.static-path-pattern=/** # Path pattern used for static resources.
 
-# SPRING WEB SERVICES (WebServicesProperties)
+##### SPRING WEB SERVICES (WebServicesProperties)
 spring.webservices.path=/services # Path that serves as the base URI for the services.
 spring.webservices.servlet.init= # Servlet init parameters to pass to Spring Web Services.
 spring.webservices.servlet.load-on-startup=-1 # Load on startup priority of the Spring Web Services servlet.
@@ -486,25 +486,25 @@ spring.webservices.wsdl-locations= # Comma-separated list of locations of WSDLs 
 
 
 
-# ----------------------------------------
-# SECURITY PROPERTIES
-# ----------------------------------------
-# SECURITY (SecurityProperties)
+##### ----------------------------------------
+##### SECURITY PROPERTIES
+##### ----------------------------------------
+##### SECURITY (SecurityProperties)
 spring.security.filter.order=-100 # Security filter chain order.
 spring.security.filter.dispatcher-types=async,error,request # Security filter chain dispatcher types.
 spring.security.user.name=user # Default user name.
 spring.security.user.password= # Password for the default user name.
 spring.security.user.roles= # Granted roles for the default user name.
 
-# SECURITY OAUTH2 CLIENT (OAuth2ClientProperties)
+##### SECURITY OAUTH2 CLIENT (OAuth2ClientProperties)
 spring.security.oauth2.client.provider.*= # OAuth provider details.
 spring.security.oauth2.client.registration.*= # OAuth client registrations.
 
-# ----------------------------------------
-# DATA PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### DATA PROPERTIES
+##### ----------------------------------------
 
-# FLYWAY (FlywayProperties)
+##### FLYWAY (FlywayProperties)
 spring.flyway.baseline-description= #
 spring.flyway.baseline-on-migrate= #
 spring.flyway.baseline-version=1 # Version to start migration
@@ -543,7 +543,7 @@ spring.flyway.url= # JDBC url of the database to migrate. If not set, the primar
 spring.flyway.user= # Login user of the database to migrate.
 spring.flyway.validate-on-migrate= #
 
-# LIQUIBASE (LiquibaseProperties)
+##### LIQUIBASE (LiquibaseProperties)
 spring.liquibase.change-log=classpath:/db/changelog/db.changelog-master.yaml # Change log configuration path.
 spring.liquibase.check-change-log-location=true # Whether to check that the change log location exists.
 spring.liquibase.contexts= # Comma-separated list of runtime contexts to use.
@@ -557,7 +557,7 @@ spring.liquibase.rollback-file= # File to which rollback SQL is written when an 
 spring.liquibase.url= # JDBC URL of the database to migrate. If not set, the primary configured data source is used.
 spring.liquibase.user= # Login user of the database to migrate.
 
-# COUCHBASE (CouchbaseProperties)
+##### COUCHBASE (CouchbaseProperties)
 spring.couchbase.bootstrap-hosts= # Couchbase nodes (host or IP address) to bootstrap from.
 spring.couchbase.bucket.name=default # Name of the bucket to connect to.
 spring.couchbase.bucket.password=  # Password of the bucket.
@@ -575,10 +575,10 @@ spring.couchbase.env.timeouts.query=7500ms # N1QL query operations timeout.
 spring.couchbase.env.timeouts.socket-connect=1000ms # Socket connect connections timeout.
 spring.couchbase.env.timeouts.view=7500ms # Regular and geospatial view operations timeout.
 
-# DAO (PersistenceExceptionTranslationAutoConfiguration)
+##### DAO (PersistenceExceptionTranslationAutoConfiguration)
 spring.dao.exceptiontranslation.enabled=true # Whether to enable the PersistenceExceptionTranslationPostProcessor.
 
-# CASSANDRA (CassandraProperties)
+##### CASSANDRA (CassandraProperties)
 spring.data.cassandra.cluster-name= # Name of the Cassandra cluster.
 spring.data.cassandra.compression=none # Compression supported by the Cassandra binary protocol.
 spring.data.cassandra.connect-timeout= # Socket option: connection time out.
@@ -602,21 +602,21 @@ spring.data.cassandra.schema-action=none # Schema action to take at startup.
 spring.data.cassandra.ssl=false # Enable SSL support.
 spring.data.cassandra.username= # Login user of the server.
 
-# DATA COUCHBASE (CouchbaseDataProperties)
+##### DATA COUCHBASE (CouchbaseDataProperties)
 spring.data.couchbase.auto-index=false # Automatically create views and indexes.
 spring.data.couchbase.consistency=read-your-own-writes # Consistency to apply by default on generated queries.
 spring.data.couchbase.repositories.type=auto # Type of Couchbase repositories to enable.
 
-# ELASTICSEARCH (ElasticsearchProperties)
+##### ELASTICSEARCH (ElasticsearchProperties)
 spring.data.elasticsearch.cluster-name=elasticsearch # Elasticsearch cluster name.
 spring.data.elasticsearch.cluster-nodes= # Comma-separated list of cluster node addresses.
 spring.data.elasticsearch.properties.*= # Additional properties used to configure the client.
 spring.data.elasticsearch.repositories.enabled=true # Whether to enable Elasticsearch repositories.
 
-# DATA LDAP
+##### DATA LDAP
 spring.data.ldap.repositories.enabled=true # Whether to enable LDAP repositories.
 
-# MONGODB (MongoProperties)
+##### MONGODB (MongoProperties)
 spring.data.mongodb.authentication-database= # Authentication database name.
 spring.data.mongodb.database= # Database name.
 spring.data.mongodb.field-naming-strategy= # Fully qualified name of the FieldNamingStrategy to use.
@@ -628,10 +628,10 @@ spring.data.mongodb.repositories.type=auto # Type of Mongo repositories to enabl
 spring.data.mongodb.uri=mongodb://localhost/test # Mongo database URI. Cannot be set with host, port and credentials.
 spring.data.mongodb.username= # Login user of the mongo server. Cannot be set with URI.
 
-# DATA REDIS
+##### DATA REDIS
 spring.data.redis.repositories.enabled=true # Whether to enable Redis repositories.
 
-# NEO4J (Neo4jProperties)
+##### NEO4J (Neo4jProperties)
 spring.data.neo4j.auto-index=none # Auto index mode.
 spring.data.neo4j.embedded.enabled=true # Whether to enable embedded mode if the embedded driver is available.
 spring.data.neo4j.open-in-view=true # Register OpenSessionInViewInterceptor. Binds a Neo4j Session to the thread for the entire processing of the request.
@@ -640,7 +640,7 @@ spring.data.neo4j.repositories.enabled=true # Whether to enable Neo4j repositori
 spring.data.neo4j.uri= # URI used by the driver. Auto-detected by default.
 spring.data.neo4j.username= # Login user of the server.
 
-# DATA REST (RepositoryRestProperties)
+##### DATA REST (RepositoryRestProperties)
 spring.data.rest.base-path= # Base path to be used by Spring Data REST to expose repository resources.
 spring.data.rest.default-media-type= # Content type to use as a default when none is specified.
 spring.data.rest.default-page-size= # Default size of pages.
@@ -653,12 +653,12 @@ spring.data.rest.return-body-on-create= # Whether to return a response body afte
 spring.data.rest.return-body-on-update= # Whether to return a response body after updating an entity.
 spring.data.rest.sort-param-name= # Name of the URL query string parameter that indicates what direction to sort results.
 
-# SOLR (SolrProperties)
+##### SOLR (SolrProperties)
 spring.data.solr.host=http://127.0.0.1:8983/solr # Solr host. Ignored if "zk-host" is set.
 spring.data.solr.repositories.enabled=true # Whether to enable Solr repositories.
 spring.data.solr.zk-host= # ZooKeeper host address in the form HOST:PORT.
 
-# DATA WEB (SpringDataWebProperties)
+##### DATA WEB (SpringDataWebProperties)
 spring.data.web.pageable.default-page-size=20 # Default page size.
 spring.data.web.pageable.max-page-size=2000 # Maximum page size to be accepted.
 spring.data.web.pageable.one-indexed-parameters=false # Whether to expose and assume 1-based page number indexes.
@@ -668,7 +668,7 @@ spring.data.web.pageable.qualifier-delimiter=_ # Delimiter to be used between th
 spring.data.web.pageable.size-parameter=size # Page size parameter name.
 spring.data.web.sort.sort-parameter=sort # Sort parameter name.
 
-# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+##### DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring.datasource.continue-on-error=false # Whether to stop if an error occurs while initializing the database.
 spring.datasource.data= # Data (DML) script resource references.
 spring.datasource.data-username= # Username of the database to execute DML scripts (if different).
@@ -695,7 +695,7 @@ spring.datasource.username= # Login username of the database.
 spring.datasource.xa.data-source-class-name= # XA datasource fully qualified name.
 spring.datasource.xa.properties= # Properties to pass to the XA data source.
 
-# JEST (Elasticsearch HTTP client) (JestProperties)
+##### JEST (Elasticsearch HTTP client) (JestProperties)
 spring.elasticsearch.jest.connection-timeout=3s # Connection timeout.
 spring.elasticsearch.jest.multi-threaded=true # Whether to enable connection requests from multiple execution threads.
 spring.elasticsearch.jest.password= # Login password.
@@ -705,26 +705,26 @@ spring.elasticsearch.jest.read-timeout=3s # Read timeout.
 spring.elasticsearch.jest.uris=http://localhost:9200 # Comma-separated list of the Elasticsearch instances to use.
 spring.elasticsearch.jest.username= # Login username.
 
-# H2 Web Console (H2ConsoleProperties)
+##### H2 Web Console (H2ConsoleProperties)
 spring.h2.console.enabled=false # Whether to enable the console.
 spring.h2.console.path=/h2-console # Path at which the console is available.
 spring.h2.console.settings.trace=false # Whether to enable trace output.
 spring.h2.console.settings.web-allow-others=false # Whether to enable remote access.
 
-# InfluxDB (InfluxDbProperties)
+##### InfluxDB (InfluxDbProperties)
 spring.influx.password= # Login password.
 spring.influx.url= # URL of the InfluxDB instance to which to connect.
 spring.influx.user= # Login user.
 
-# JOOQ (JooqProperties)
+##### JOOQ (JooqProperties)
 spring.jooq.sql-dialect= # SQL dialect to use. Auto-detected by default.
 
-# JDBC (JdbcProperties)
+##### JDBC (JdbcProperties)
 spring.jdbc.template.fetch-size=-1 # Number of rows that should be fetched from the database when more rows are needed.
 spring.jdbc.template.max-rows=-1 # Maximum number of rows.
 spring.jdbc.template.query-timeout= # Query timeout. Default is to use the JDBC driver's default configuration. If a duration suffix is not specified, seconds will be used.
 
-# JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)
+##### JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)
 spring.data.jpa.repositories.enabled=true # Whether to enable JPA repositories.
 spring.jpa.database= # Target database to operate on, auto-detected by default. Can be alternatively set using the "databasePlatform" property.
 spring.jpa.database-platform= # Name of the target database to operate on, auto-detected by default. Can be alternatively set using the "Database" enum.
@@ -738,12 +738,12 @@ spring.jpa.open-in-view=true # Register OpenEntityManagerInViewInterceptor. Bind
 spring.jpa.properties.*= # Additional native properties to set on the JPA provider.
 spring.jpa.show-sql=false # Whether to enable logging of SQL statements.
 
-# JTA (JtaAutoConfiguration)
+##### JTA (JtaAutoConfiguration)
 spring.jta.enabled=true # Whether to enable JTA support.
 spring.jta.log-dir= # Transaction logs directory.
 spring.jta.transaction-manager-id= # Transaction manager unique identifier.
 
-# ATOMIKOS (AtomikosProperties)
+##### ATOMIKOS (AtomikosProperties)
 spring.jta.atomikos.connectionfactory.borrow-connection-timeout=30 # Timeout, in seconds, for borrowing connections from the pool.
 spring.jta.atomikos.connectionfactory.ignore-session-transacted-flag=true # Whether to ignore the transacted flag when creating session.
 spring.jta.atomikos.connectionfactory.local-transaction-mode=false # Whether local transactions are desired.
@@ -789,7 +789,7 @@ spring.jta.atomikos.properties.service= # Transaction manager implementation tha
 spring.jta.atomikos.properties.threaded-two-phase-commit=false # Whether to use different (and concurrent) threads for two-phase commit on the participating resources.
 spring.jta.atomikos.properties.transaction-manager-unique-name= # The transaction manager's unique name.
 
-# BITRONIX
+##### BITRONIX
 spring.jta.bitronix.connectionfactory.acquire-increment=1 # Number of connections to create when growing the pool.
 spring.jta.bitronix.connectionfactory.acquisition-interval=1 # Time, in seconds, to wait before trying to acquire a connection again after an invalid connection was acquired.
 spring.jta.bitronix.connectionfactory.acquisition-timeout=30 # Timeout, in seconds, for acquiring connections from the pool.
@@ -862,7 +862,7 @@ spring.jta.bitronix.properties.server-id= # ASCII ID that must uniquely identify
 spring.jta.bitronix.properties.skip-corrupted-logs=false # Skip corrupted transactions log entries.
 spring.jta.bitronix.properties.warn-about-zero-resource-transaction=true # Whether to log a warning for transactions executed without a single enlisted resource.
 
-# NARAYANA (NarayanaProperties)
+##### NARAYANA (NarayanaProperties)
 spring.jta.narayana.default-timeout=60s # Transaction timeout. If a duration suffix is not specified, seconds will be used.
 spring.jta.narayana.expiry-scanners=com.arjuna.ats.internal.arjuna.recovery.ExpiredTransactionStatusManagerScanner # Comma-separated list of expiry scanners.
 spring.jta.narayana.log-dir= # Transaction object store directory.
@@ -877,14 +877,14 @@ spring.jta.narayana.recovery-modules= # Comma-separated list of recovery modules
 spring.jta.narayana.transaction-manager-id=1 # Unique transaction manager id.
 spring.jta.narayana.xa-resource-orphan-filters= # Comma-separated list of orphan filters.
 
-# EMBEDDED MONGODB (EmbeddedMongoProperties)
+##### EMBEDDED MONGODB (EmbeddedMongoProperties)
 spring.mongodb.embedded.features=sync_delay # Comma-separated list of features to enable.
 spring.mongodb.embedded.storage.database-dir= # Directory used for data storage.
 spring.mongodb.embedded.storage.oplog-size= # Maximum size of the oplog, in megabytes.
 spring.mongodb.embedded.storage.repl-set-name= # Name of the replica set.
 spring.mongodb.embedded.version=3.2.2 # Version of Mongo to use.
 
-# REDIS (RedisProperties)
+##### REDIS (RedisProperties)
 spring.redis.cluster.max-redirects= # Maximum number of redirects to follow when executing commands across the cluster.
 spring.redis.cluster.nodes= # Comma-separated list of "host:port" pairs to bootstrap from.
 spring.redis.database=0 # Database index used by the connection factory.
@@ -906,17 +906,17 @@ spring.redis.sentinel.nodes= # Comma-separated list of "host:port" pairs.
 spring.redis.ssl=false # Whether to enable SSL support.
 spring.redis.timeout= # Connection timeout.
 
-# TRANSACTION (TransactionProperties)
+##### TRANSACTION (TransactionProperties)
 spring.transaction.default-timeout= # Default transaction timeout. If a duration suffix is not specified, seconds will be used.
 spring.transaction.rollback-on-commit-failure= # Whether to roll back on commit failures.
 
 
 
-# ----------------------------------------
-# INTEGRATION PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### INTEGRATION PROPERTIES
+##### ----------------------------------------
 
-# ACTIVEMQ (ActiveMQProperties)
+##### ACTIVEMQ (ActiveMQProperties)
 spring.activemq.broker-url= # URL of the ActiveMQ broker. Auto-generated by default.
 spring.activemq.close-timeout=15s # Time to wait before considering a close complete.
 spring.activemq.in-memory=true # Whether the default broker URL should be in memory. Ignored if an explicit broker has been specified.
@@ -938,7 +938,7 @@ spring.activemq.pool.reconnect-on-exception=true # Reset the connection when a "
 spring.activemq.pool.time-between-expiration-check=-1ms # Time to sleep between runs of the idle connection eviction thread. When negative, no idle connection eviction thread runs.
 spring.activemq.pool.use-anonymous-producers=true # Whether to use only one anonymous "MessageProducer" instance. Set it to false to create one "MessageProducer" every time one is required.
 
-# ARTEMIS (ArtemisProperties)
+##### ARTEMIS (ArtemisProperties)
 spring.artemis.embedded.cluster-password= # Cluster password. Randomly generated on startup by default.
 spring.artemis.embedded.data-directory= # Journal file directory. Not necessary if persistence is turned off.
 spring.artemis.embedded.enabled=true # Whether to enable embedded mode if the Artemis server APIs are available.
@@ -952,18 +952,18 @@ spring.artemis.password= # Login password of the broker.
 spring.artemis.port=61616 # Artemis broker port.
 spring.artemis.user= # Login user of the broker.
 
-# SPRING BATCH (BatchProperties)
+##### SPRING BATCH (BatchProperties)
 spring.batch.initialize-schema=embedded # Database schema initialization mode.
 spring.batch.job.enabled=true # Execute all Spring Batch jobs in the context on startup.
 spring.batch.job.names= # Comma-separated list of job names to execute on startup (for instance, `job1,job2`). By default, all Jobs found in the context are executed.
 spring.batch.schema=classpath:org/springframework/batch/core/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
 spring.batch.table-prefix= # Table prefix for all the batch meta-data tables.
 
-# SPRING INTEGRATION (IntegrationProperties)
+##### SPRING INTEGRATION (IntegrationProperties)
 spring.integration.jdbc.initialize-schema=embedded # Database schema initialization mode.
 spring.integration.jdbc.schema=classpath:org/springframework/integration/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
 
-# JMS (JmsProperties)
+##### JMS (JmsProperties)
 spring.jms.jndi-name= # Connection factory JNDI name. When set, takes precedence to others connection factory auto-configurations.
 spring.jms.listener.acknowledge-mode= # Acknowledge mode of the container. By default, the listener is transacted with automatic acknowledgment.
 spring.jms.listener.auto-startup=true # Start the container automatically on startup.
@@ -978,7 +978,7 @@ spring.jms.template.qos-enabled= # Whether to enable explicit QoS (Quality of Se
 spring.jms.template.receive-timeout= # Timeout to use for receive calls.
 spring.jms.template.time-to-live= # Time-to-live of a message when sending. Enables QoS (Quality of Service) when set.
 
-# APACHE KAFKA (KafkaProperties)
+##### APACHE KAFKA (KafkaProperties)
 spring.kafka.admin.client-id= # ID to pass to the server when making requests. Used for server-side logging.
 spring.kafka.admin.fail-fast=false # Whether to fail fast if the broker is not available on startup.
 spring.kafka.admin.properties.*= # Additional admin-specific properties used to configure the client.
@@ -1058,7 +1058,7 @@ spring.kafka.ssl.truststore-password= # Store password for the trust store file.
 spring.kafka.ssl.truststore-type= # Type of the trust store.
 spring.kafka.template.default-topic= # Default topic to which messages are sent.
 
-# RABBIT (RabbitProperties)
+##### RABBIT (RabbitProperties)
 spring.rabbitmq.addresses= # Comma-separated list of addresses to which the client should connect.
 spring.rabbitmq.cache.channel.checkout-timeout= # Duration to wait to obtain a channel if the cache size has been reached.
 spring.rabbitmq.cache.channel.size= # Number of channels to retain in the cache.
@@ -1121,11 +1121,11 @@ spring.rabbitmq.username=guest # Login user to authenticate to the broker.
 spring.rabbitmq.virtual-host= # Virtual host to use when connecting to the broker.
 
 
-# ----------------------------------------
-# ACTUATOR PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### ACTUATOR PROPERTIES
+##### ----------------------------------------
 
-# MANAGEMENT HTTP SERVER (ManagementServerProperties)
+##### MANAGEMENT HTTP SERVER (ManagementServerProperties)
 management.server.add-application-context-header=false # Add the "X-Application-Context" HTTP header in each response.
 management.server.address= # Network address to which the management endpoints should bind. Requires a custom management.server.port.
 management.server.port= # Management endpoint HTTP port (uses the same port as the application by default). Configure a different port to use management-specific SSL.
@@ -1146,27 +1146,27 @@ management.server.ssl.trust-store-password= # Password used to access the trust 
 management.server.ssl.trust-store-provider= # Provider for the trust store. Requires a custom management.server.port.
 management.server.ssl.trust-store-type= # Type of the trust store. Requires a custom management.server.port.
 
-# CLOUDFOUNDRY
+##### CLOUDFOUNDRY
 management.cloudfoundry.enabled=true # Whether to enable extended Cloud Foundry actuator endpoints.
 management.cloudfoundry.skip-ssl-validation=false # Whether to skip SSL verification for Cloud Foundry actuator endpoint security calls.
 
-# ENDPOINTS GENERAL CONFIGURATION
+##### ENDPOINTS GENERAL CONFIGURATION
 management.endpoints.enabled-by-default= # Whether to enable or disable all endpoints by default.
 
-# ENDPOINTS JMX CONFIGURATION (JmxEndpointProperties)
+##### ENDPOINTS JMX CONFIGURATION (JmxEndpointProperties)
 management.endpoints.jmx.domain=org.springframework.boot # Endpoints JMX domain name. Fallback to 'spring.jmx.default-domain' if set.
 management.endpoints.jmx.exposure.include=* # Endpoint IDs that should be included or '*' for all.
 management.endpoints.jmx.exposure.exclude= # Endpoint IDs that should be excluded.
 management.endpoints.jmx.static-names= # Additional static properties to append to all ObjectNames of MBeans representing Endpoints.
 management.endpoints.jmx.unique-names=false # Whether to ensure that ObjectNames are modified in case of conflict.
 
-# ENDPOINTS WEB CONFIGURATION (WebEndpointProperties)
+##### ENDPOINTS WEB CONFIGURATION (WebEndpointProperties)
 management.endpoints.web.exposure.include=health,info # Endpoint IDs that should be included or '*' for all.
 management.endpoints.web.exposure.exclude= # Endpoint IDs that should be excluded.
 management.endpoints.web.base-path=/actuator # Base path for Web endpoints. Relative to server.servlet.context-path or management.server.servlet.context-path if management.server.port is configured.
 management.endpoints.web.path-mapping= # Mapping between endpoint IDs and the path that should expose them.
 
-# ENDPOINTS CORS CONFIGURATION (CorsEndpointProperties)
+##### ENDPOINTS CORS CONFIGURATION (CorsEndpointProperties)
 management.endpoints.web.cors.allow-credentials= # Whether credentials are supported. When not set, credentials are not supported.
 management.endpoints.web.cors.allowed-headers= # Comma-separated list of headers to allow in a request. '*' allows all headers.
 management.endpoints.web.cors.allowed-methods= # Comma-separated list of methods to allow. '*' allows all methods. When not set, defaults to GET.
@@ -1174,95 +1174,95 @@ management.endpoints.web.cors.allowed-origins= # Comma-separated list of origins
 management.endpoints.web.cors.exposed-headers= # Comma-separated list of headers to include in a response.
 management.endpoints.web.cors.max-age=1800s # How long the response from a pre-flight request can be cached by clients. If a duration suffix is not specified, seconds will be used.
 
-# AUDIT EVENTS ENDPOINT (AuditEventsEndpoint)
+##### AUDIT EVENTS ENDPOINT (AuditEventsEndpoint)
 management.endpoint.auditevents.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.auditevents.enabled=true # Whether to enable the auditevents endpoint.
 
-# BEANS ENDPOINT (BeansEndpoint)
+##### BEANS ENDPOINT (BeansEndpoint)
 management.endpoint.beans.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.beans.enabled=true # Whether to enable the beans endpoint.
 
-# CONDITIONS REPORT ENDPOINT (ConditionsReportEndpoint)
+##### CONDITIONS REPORT ENDPOINT (ConditionsReportEndpoint)
 management.endpoint.conditions.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.conditions.enabled=true # Whether to enable the conditions endpoint.
 
-# CONFIGURATION PROPERTIES REPORT ENDPOINT (ConfigurationPropertiesReportEndpoint, ConfigurationPropertiesReportEndpointProperties)
+##### CONFIGURATION PROPERTIES REPORT ENDPOINT (ConfigurationPropertiesReportEndpoint, ConfigurationPropertiesReportEndpointProperties)
 management.endpoint.configprops.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.configprops.enabled=true # Whether to enable the configprops endpoint.
 management.endpoint.configprops.keys-to-sanitize=password,secret,key,token,.*credentials.*,vcap_services,sun.java.command # Keys that should be sanitized. Keys can be simple strings that the property ends with or regular expressions.
 
-# ENVIRONMENT ENDPOINT (EnvironmentEndpoint, EnvironmentEndpointProperties)
+##### ENVIRONMENT ENDPOINT (EnvironmentEndpoint, EnvironmentEndpointProperties)
 management.endpoint.env.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.env.enabled=true # Whether to enable the env endpoint.
 management.endpoint.env.keys-to-sanitize=password,secret,key,token,.*credentials.*,vcap_services,sun.java.command # Keys that should be sanitized. Keys can be simple strings that the property ends with or regular expressions.
 
-# FLYWAY ENDPOINT (FlywayEndpoint)
+##### FLYWAY ENDPOINT (FlywayEndpoint)
 management.endpoint.flyway.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.flyway.enabled=true # Whether to enable the flyway endpoint.
 
-# HEALTH ENDPOINT (HealthEndpoint, HealthEndpointProperties)
+##### HEALTH ENDPOINT (HealthEndpoint, HealthEndpointProperties)
 management.endpoint.health.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.health.enabled=true # Whether to enable the health endpoint.
 management.endpoint.health.roles= # Roles used to determine whether or not a user is authorized to be shown details. When empty, all authenticated users are authorized.
 management.endpoint.health.show-details=never # When to show full health details.
 
-# HEAP DUMP ENDPOINT (HeapDumpWebEndpoint)
+##### HEAP DUMP ENDPOINT (HeapDumpWebEndpoint)
 management.endpoint.heapdump.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.heapdump.enabled=true # Whether to enable the heapdump endpoint.
 
-# HTTP TRACE ENDPOINT (HttpTraceEndpoint)
+##### HTTP TRACE ENDPOINT (HttpTraceEndpoint)
 management.endpoint.httptrace.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.httptrace.enabled=true # Whether to enable the httptrace endpoint.
 
-# INFO ENDPOINT (InfoEndpoint)
+##### INFO ENDPOINT (InfoEndpoint)
 info= # Arbitrary properties to add to the info endpoint.
 management.endpoint.info.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.info.enabled=true # Whether to enable the info endpoint.
 
-# JOLOKIA ENDPOINT (JolokiaProperties)
+##### JOLOKIA ENDPOINT (JolokiaProperties)
 management.endpoint.jolokia.config.*= # Jolokia settings. Refer to the documentation of Jolokia for more details.
 management.endpoint.jolokia.enabled=true # Whether to enable the jolokia endpoint.
 
-# LIQUIBASE ENDPOINT (LiquibaseEndpoint)
+##### LIQUIBASE ENDPOINT (LiquibaseEndpoint)
 management.endpoint.liquibase.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.liquibase.enabled=true # Whether to enable the liquibase endpoint.
 
-# LOG FILE ENDPOINT (LogFileWebEndpoint, LogFileWebEndpointProperties)
+##### LOG FILE ENDPOINT (LogFileWebEndpoint, LogFileWebEndpointProperties)
 management.endpoint.logfile.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.logfile.enabled=true # Whether to enable the logfile endpoint.
 management.endpoint.logfile.external-file= # External Logfile to be accessed. Can be used if the logfile is written by output redirect and not by the logging system itself.
 
-# LOGGERS ENDPOINT (LoggersEndpoint)
+##### LOGGERS ENDPOINT (LoggersEndpoint)
 management.endpoint.loggers.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.loggers.enabled=true # Whether to enable the loggers endpoint.
 
-# REQUEST MAPPING ENDPOINT  (MappingsEndpoint)
+##### REQUEST MAPPING ENDPOINT  (MappingsEndpoint)
 management.endpoint.mappings.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.mappings.enabled=true # Whether to enable the mappings endpoint.
 
-# METRICS ENDPOINT (MetricsEndpoint)
+##### METRICS ENDPOINT (MetricsEndpoint)
 management.endpoint.metrics.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.metrics.enabled=true # Whether to enable the metrics endpoint.
 
-# PROMETHEUS ENDPOINT (PrometheusScrapeEndpoint)
+##### PROMETHEUS ENDPOINT (PrometheusScrapeEndpoint)
 management.endpoint.prometheus.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.prometheus.enabled=true # Whether to enable the prometheus endpoint.
 
-# SCHEDULED TASKS ENDPOINT (ScheduledTasksEndpoint)
+##### SCHEDULED TASKS ENDPOINT (ScheduledTasksEndpoint)
 management.endpoint.scheduledtasks.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.scheduledtasks.enabled=true # Whether to enable the scheduledtasks endpoint.
 
-# SESSIONS ENDPOINT (SessionsEndpoint)
+##### SESSIONS ENDPOINT (SessionsEndpoint)
 management.endpoint.sessions.enabled=true # Whether to enable the sessions endpoint.
 
-# SHUTDOWN ENDPOINT (ShutdownEndpoint)
+##### SHUTDOWN ENDPOINT (ShutdownEndpoint)
 management.endpoint.shutdown.enabled=false # Whether to enable the shutdown endpoint.
 
-# THREAD DUMP ENDPOINT (ThreadDumpEndpoint)
+##### THREAD DUMP ENDPOINT (ThreadDumpEndpoint)
 management.endpoint.threaddump.cache.time-to-live=0ms # Maximum time that a response can be cached.
 management.endpoint.threaddump.enabled=true # Whether to enable the threaddump endpoint.
 
-# HEALTH INDICATORS
+##### HEALTH INDICATORS
 management.health.db.enabled=true # Whether to enable database health check.
 management.health.cassandra.enabled=true # Whether to enable Cassandra health check.
 management.health.couchbase.enabled=true # Whether to enable Couchbase health check.
@@ -1285,18 +1285,18 @@ management.health.solr.enabled=true # Whether to enable Solr health check.
 management.health.status.http-mapping= # Mapping of health statuses to HTTP status codes. By default, registered health statuses map to sensible defaults (for example, UP maps to 200).
 management.health.status.order=DOWN,OUT_OF_SERVICE,UP,UNKNOWN # Comma-separated list of health statuses in order of severity.
 
-# HTTP TRACING (HttpTraceProperties)
+##### HTTP TRACING (HttpTraceProperties)
 management.trace.http.enabled=true # Whether to enable HTTP request-response tracing.
 management.trace.http.include=request-headers,response-headers,cookies,errors # Items to be included in the trace.
 
-# INFO CONTRIBUTORS (InfoContributorProperties)
+##### INFO CONTRIBUTORS (InfoContributorProperties)
 management.info.build.enabled=true # Whether to enable build info.
 management.info.defaults.enabled=true # Whether to enable default info contributors.
 management.info.env.enabled=true # Whether to enable environment info.
 management.info.git.enabled=true # Whether to enable git info.
 management.info.git.mode=simple # Mode to use to expose git information.
 
-# METRICS
+##### METRICS
 management.metrics.binders.files.enabled=true # Whether to enable files metrics.
 management.metrics.binders.integration.enabled=true # Whether to enable Spring Integration metrics.
 management.metrics.binders.jvm.enabled=true # Whether to enable JVM metrics.
@@ -1413,11 +1413,11 @@ management.metrics.web.server.auto-time-requests=true # Whether requests handled
 management.metrics.web.server.requests-metric-name=http.server.requests # Name of the metric for received requests.
 
 
-# ----------------------------------------
-# DEVTOOLS PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### DEVTOOLS PROPERTIES
+##### ----------------------------------------
 
-# DEVTOOLS (DevToolsProperties)
+##### DEVTOOLS (DevToolsProperties)
 spring.devtools.livereload.enabled=true # Whether to enable a livereload.com-compatible server.
 spring.devtools.livereload.port=35729 # Server port.
 spring.devtools.restart.additional-exclude= # Additional patterns that should be excluded from triggering a full restart.
@@ -1429,7 +1429,7 @@ spring.devtools.restart.poll-interval=1s # Amount of time to wait between pollin
 spring.devtools.restart.quiet-period=400ms # Amount of quiet time required without any classpath changes before a restart is triggered.
 spring.devtools.restart.trigger-file= # Name of a specific file that, when changed, triggers the restart check. If not specified, any classpath file change triggers the restart.
 
-# REMOTE DEVTOOLS (RemoteDevToolsProperties)
+##### REMOTE DEVTOOLS (RemoteDevToolsProperties)
 spring.devtools.remote.context-path=/.~~spring-boot!~ # Context path used to handle the remote connection.
 spring.devtools.remote.proxy.host= # The host of the proxy to use to connect to the remote application.
 spring.devtools.remote.proxy.port= # The port of the proxy to use to connect to the remote application.
@@ -1438,9 +1438,9 @@ spring.devtools.remote.secret= # A shared secret required to establish a connect
 spring.devtools.remote.secret-header-name=X-AUTH-TOKEN # HTTP header used to transfer the shared secret.
 
 
-# ----------------------------------------
-# TESTING PROPERTIES
-# ----------------------------------------
+##### ----------------------------------------
+##### TESTING PROPERTIES
+##### ----------------------------------------
 
 spring.test.database.replace=any # Type of existing DataSource to replace.
 spring.test.mockmvc.print=default # MVC Print option.
