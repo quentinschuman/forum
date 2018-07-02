@@ -1,6 +1,7 @@
 package com.zjgsu.forum.config;
 
 import com.zjgsu.forum.core.base.BaseEntity;
+import com.zjgsu.forum.web.tag.*;
 import freemarker.template.TemplateModelException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.security.SecurityConfig;
@@ -30,7 +31,7 @@ public class FreemarkerConfig {
     private UserCollectDirective userCollectDirective;
 
     @Autowired
-    private TopicDirective topicDirective;
+    private TopicsDirective topicsDirective;
 
     @Autowired
     private UserDirective userDirective;
@@ -39,10 +40,10 @@ public class FreemarkerConfig {
     private CurrentUserDirective currentUserDirective;
 
     @Autowired
-    private NotificationDirective notificationDirective;
+    private NotificationsDirective notificationsDirective;
 
     @Autowired
-    private CommentDirective commentDirective;
+    private CommentsDirective commentsDirective;
 
     @Autowired
     private ReputationDirective reputationDirective;
