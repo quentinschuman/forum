@@ -3,14 +3,22 @@ package com.zjgsu.forum.core.base;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.jsoup.nodes.Document;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by qianshu on 2018/6/26.
@@ -64,11 +72,93 @@ public class BaseEntity {
         return StringUtils.isEmpty(text);
     }
 
-    public String formatContent(String content){
+    public String formatContent(String content) {
         Document parse = Jsoup.parse(content);
         Elements tableElements = parse.select("table");
         tableElements.forEach(element -> element.addClass("table table-bordered"));
         Elements aElements = parse.select("p");
+        if (aElements != null && aElements.size() > 0) {
+            aElements.forEach(element -> {
+                try {
+                    String href = element.text();
+                    if (href.contains("https://www.youtube.com/watch")) {
+                        URL aUrl = new URL(href);
+                        String query = aUrl.getQuery();
+                        Map<String, Object> querys = StrUtil.formatParams(query);
+                        element.text("");
+                        element.addClass("embed-responsive embed-responsive-16by9");
+                        element.append("<iframe class='embedded_video' src='https://www.youtube.com/embed/" + querys.get("v") + "' frameborder='0' allowfullscreen></iframe>");
+                    } else if(href.contains("http://v.youku.com/v_show/")) {
+                        element.text("");
+                        URL aUrl = new URL(href);
+                        String _href = "http://player.youku.com/embed/" + aUrl.getPath().replace("/v_show/id_", "").replace(".html", "");
+                        element.addClass("embedded_video_wrapper");
+                        element.append("<iframe class='embedded_video' src='" + _href + "' frameborder='0' allowfullscreen></iframe>");
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        return parse.outerHtml();
+    }
+
+    public User getUser() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+        String token = CookieHelper.getValue(request, siteConfig.getCookie().getUserName());
+        if (org.springframework.util.StringUtils.isEmpty(token)) return null;
+        // token不为空，查redis
+        try {
+            token = new String(Base64Helper.decode(token));
+            ValueOperations<String, String> stringStringValueOperations = stringRedisTemplate.opsForValue();
+            String redisUser = stringStringValueOperations.get(token);
+            if (!org.springframework.util.StringUtils.isEmpty(redisUser)) return JsonUtil.jsonToObject(redisUser, User.class);
+
+            User user = userService.findByToken(token);
+            if (user == null) {
+                CookieHelper.clearCookieByName(response, siteConfig.getCookie().getUserName());
+            } else {
+                stringStringValueOperations.set(token, JsonUtil.objectToJson(user));
+                return user;
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            CookieHelper.clearCookieByName(response, siteConfig.getCookie().getUserName());
+        }
+        return null;
+    }
+
+    public AdminUser getAdminUser() {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+        String token = CookieHelper.getValue(request, siteConfig.getCookie().getAdminUserName());
+        if (org.springframework.util.StringUtils.isEmpty(token)) return null;
+        // token不为空，查redis
+        try {
+            token = new String(Base64Helper.decode(token));
+            ValueOperations<String, String> stringStringValueOperations = stringRedisTemplate.opsForValue();
+            String redisAdminUser = stringStringValueOperations.get("admin_" + token);
+            if (!org.springframework.util.StringUtils.isEmpty(redisAdminUser)) return JsonUtil.jsonToObject(redisAdminUser, AdminUser.class);
+
+            AdminUser adminUser = adminUserService.findByToken(token);
+            if (adminUser == null) {
+                CookieHelper.clearCookieByName(request, response, siteConfig.getCookie().getAdminUserName(),
+                        siteConfig.getCookie().getDomain(), "/admin/");
+            } else {
+                Role role = roleService.findById(adminUser.getRoleId());
+                List<Permission> permissions = permissionService.findByUserId(adminUser.getId());
+                adminUser.setRole(role);
+                adminUser.setPermissions(permissions);
+                stringStringValueOperations.set("admin_" + token, JsonUtil.objectToJson(adminUser));
+                return adminUser;
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            CookieHelper.clearCookieByName(request, response, siteConfig.getCookie().getAdminUserName(),
+                    siteConfig.getCookie().getDomain(), "/admin/");
+        }
+        return null;
     }
 
 }
