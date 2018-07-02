@@ -1,10 +1,10 @@
 package com.zjgsu.forum.web.tag;
 
-import co.yiiu.config.SiteConfig;
-import co.yiiu.core.base.BaseController;
-import co.yiiu.module.notification.service.NotificationService;
-import co.yiiu.module.user.model.User;
-import co.yiiu.module.user.service.UserService;
+import com.zjgsu.forum.config.SiteConfig;
+import com.zjgsu.forum.core.base.BaseController;
+import com.zjgsu.forum.module.notification.service.NotificationService;
+import com.zjgsu.forum.module.user.model.User;
+import com.zjgsu.forum.module.user.service.UserService;
 import freemarker.core.Environment;
 import freemarker.template.*;
 import org.springframework.beans.factory.annotation.Autowired;

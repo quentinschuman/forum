@@ -1,5 +1,17 @@
 package com.zjgsu.forum.core.base;
 
+import com.zjgsu.forum.config.SiteConfig;
+import com.zjgsu.forum.core.util.CookieHelper;
+import com.zjgsu.forum.core.util.JsonUtil;
+import com.zjgsu.forum.core.util.security.Base64Helper;
+import com.zjgsu.forum.module.security.model.AdminUser;
+import com.zjgsu.forum.module.security.model.Permission;
+import com.zjgsu.forum.module.security.model.Role;
+import com.zjgsu.forum.module.security.service.AdminUserService;
+import com.zjgsu.forum.module.security.service.PermissionService;
+import com.zjgsu.forum.module.security.service.RoleService;
+import com.zjgsu.forum.module.user.model.User;
+import com.zjgsu.forum.module.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;

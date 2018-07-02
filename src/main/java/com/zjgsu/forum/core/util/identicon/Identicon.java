@@ -1,26 +1,19 @@
 package com.zjgsu.forum.core.util.identicon;
 
-import co.yiiu.config.SiteConfig;
-import co.yiiu.core.util.HashUtil;
-import co.yiiu.core.util.JsonUtil;
-import co.yiiu.core.util.StrUtil;
-import co.yiiu.core.util.identicon.generator.IBaseGenartor;
-import co.yiiu.core.util.identicon.generator.impl.MyGenerator;
-import co.yiiu.core.util.security.MD5Helper;
 import com.google.common.base.Preconditions;
-import com.qiniu.common.QiniuException;
-import com.qiniu.common.Zone;
-import com.qiniu.http.Response;
-import com.qiniu.storage.Configuration;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
-import com.qiniu.util.Auth;
+import com.zjgsu.forum.config.SiteConfig;
+import com.zjgsu.forum.core.util.HashUtil;
+import com.zjgsu.forum.core.util.StrUtil;
+import com.zjgsu.forum.core.util.identicon.generator.IBaseGenartor;
+import com.zjgsu.forum.core.util.identicon.generator.impl.MyGenerator;
+import com.zjgsu.forum.core.util.security.MD5Helper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.imageio.ImageIO;
+import javax.security.auth.login.Configuration;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;

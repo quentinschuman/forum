@@ -1,9 +1,9 @@
 package com.zjgsu.forum.module.topic.service;
 
-import co.yiiu.module.tag.model.Tag;
-import co.yiiu.module.tag.service.TagService;
-import co.yiiu.module.topic.model.TopicTag;
-import co.yiiu.module.topic.repository.TopicTagRepository;
+import com.zjgsu.forum.module.tag.model.Tag;
+import com.zjgsu.forum.module.tag.service.TagService;
+import com.zjgsu.forum.module.topic.model.TopicTag;
+import com.zjgsu.forum.module.topic.repository.TopicTagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

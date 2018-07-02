@@ -1,7 +1,7 @@
 package com.zjgsu.forum.web.tag;
 
-import co.yiiu.config.SiteConfig;
-import co.yiiu.module.topic.service.TopicService;
+import com.zjgsu.forum.config.SiteConfig;
+import com.zjgsu.forum.module.topic.service.TopicService;
 import freemarker.core.Environment;
 import freemarker.template.*;
 import org.springframework.beans.factory.annotation.Autowired;

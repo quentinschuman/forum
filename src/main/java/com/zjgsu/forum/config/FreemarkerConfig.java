@@ -61,11 +61,11 @@ public class FreemarkerConfig {
         configuration.setSharedVariable("user_topics_tag",userTopicDirective);
         configuration.setSharedVariable("user_comment_tag",userCommentDirective);
         configuration.setSharedVariable("user_collect_tag",userCollectDirective);
-        configuration.setSharedVariable("topic_tag",topicDirective);
+        configuration.setSharedVariable("topic_tag",topicsDirective);
         configuration.setSharedVariable("user_tag",userDirective);
         configuration.setSharedVariable("current_user_tag",currentUserDirective);
-        configuration.setSharedVariable("notifications_tag",notificationDirective);
-        configuration.setSharedVariable("comments_tag",commentDirective);
+        configuration.setSharedVariable("notifications_tag",notificationsDirective);
+        configuration.setSharedVariable("comments_tag",commentsDirective);
         configuration.setSharedVariable("reputation_tag",reputationDirective);
         log.info("init freemarker sharedVariables {site} success...");
     }

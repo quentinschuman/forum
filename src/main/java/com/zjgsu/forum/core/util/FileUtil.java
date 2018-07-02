@@ -1,14 +1,8 @@
 package com.zjgsu.forum.core.util;
 
-import co.yiiu.config.SiteConfig;
-import co.yiiu.module.attachment.model.Attachment;
-import co.yiiu.module.attachment.service.AttachmentService;
-import com.qiniu.common.Zone;
-import com.qiniu.http.Response;
-import com.qiniu.storage.Configuration;
-import com.qiniu.storage.UploadManager;
-import com.qiniu.storage.model.DefaultPutRet;
-import com.qiniu.util.Auth;
+import com.zjgsu.forum.config.SiteConfig;
+import com.zjgsu.forum.module.attachment.model.Attachment;
+import com.zjgsu.forum.module.attachment.service.AttachmentService;
 import lombok.Cleanup;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

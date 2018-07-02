@@ -22,7 +22,12 @@ public enum LogEventEnum {
     private String event;
     private String name;
 
-    LogEventEnum(String event){
+    LogEventEnum(String event, String name) {
+        this.event = event;
+        this.name = name;
+    }
+
+    LogEventEnum(String event) {
         this.event = event;
     }
 

@@ -1,10 +1,11 @@
 package com.zjgsu.forum.module.topic.repository;
 
-import co.yiiu.module.topic.model.TopicTag;
+import com.zjgsu.forum.module.topic.model.TopicTag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 /**
  * Created by tomoya at 2018/3/27

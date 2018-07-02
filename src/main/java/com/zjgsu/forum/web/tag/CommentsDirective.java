@@ -1,8 +1,8 @@
 package com.zjgsu.forum.web.tag;
 
-import co.yiiu.core.base.BaseController;
-import co.yiiu.module.comment.service.CommentService;
-import co.yiiu.module.user.model.User;
+import com.zjgsu.forum.core.base.BaseController;
+import com.zjgsu.forum.module.comment.service.CommentService;
+import com.zjgsu.forum.module.user.model.User;
 import freemarker.core.Environment;
 import freemarker.template.*;
 import org.springframework.beans.factory.annotation.Autowired;

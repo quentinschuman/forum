@@ -1,5 +1,8 @@
 package com.zjgsu.forum.config;
 
+import com.zjgsu.forum.web.interceptor.AdminInterceptor;
+import com.zjgsu.forum.web.interceptor.CommonInterceptor;
+import com.zjgsu.forum.web.interceptor.UserInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

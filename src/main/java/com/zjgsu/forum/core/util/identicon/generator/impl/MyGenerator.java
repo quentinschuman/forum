@@ -1,6 +1,7 @@
 package com.zjgsu.forum.core.util.identicon.generator.impl;
 
-import co.yiiu.core.util.identicon.generator.IBaseGenartor;
+
+import com.zjgsu.forum.core.util.identicon.generator.IBaseGenartor;
 
 import java.awt.*;
 import java.util.Random;

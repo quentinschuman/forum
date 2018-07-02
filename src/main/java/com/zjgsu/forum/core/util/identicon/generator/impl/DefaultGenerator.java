@@ -1,8 +1,8 @@
 package com.zjgsu.forum.core.util.identicon.generator.impl;
 
-import co.yiiu.core.util.identicon.generator.IBaseGenartor;
 import com.google.common.base.Preconditions;
 import com.google.common.math.DoubleMath;
+import com.zjgsu.forum.core.util.identicon.generator.IBaseGenartor;
 import org.springframework.util.StringUtils;
 
 import java.awt.*;
