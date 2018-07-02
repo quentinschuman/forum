@@ -4,7 +4,6 @@ import com.zjgsu.forum.core.base.BaseEntity;
 import com.zjgsu.forum.web.tag.*;
 import freemarker.template.TemplateModelException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
