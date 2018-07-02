@@ -34,6 +34,9 @@ public class AdminUserService {
         return adminUserRepository.findAll(pageable);
     }
 
+    public AdminUser findByToken(String token) {
+        return adminUserRepository.findByToken(token);
+    }
     public AdminUser findOne(Integer id){
         return adminUserRepository.findById(id).get();
     }

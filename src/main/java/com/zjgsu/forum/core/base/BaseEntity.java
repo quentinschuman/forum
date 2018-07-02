@@ -3,6 +3,7 @@ package com.zjgsu.forum.core.base;
 import com.zjgsu.forum.config.SiteConfig;
 import com.zjgsu.forum.core.util.CookieHelper;
 import com.zjgsu.forum.core.util.JsonUtil;
+import com.zjgsu.forum.core.util.StrUtil;
 import com.zjgsu.forum.core.util.security.Base64Helper;
 import com.zjgsu.forum.module.security.model.AdminUser;
 import com.zjgsu.forum.module.security.model.Permission;

@@ -29,7 +29,7 @@ public class BaseController {
     }
 
     protected User getUser(){
-        return BaseEntity.getUser();
+        return baseEntity.getUser();
     }
 
     protected AdminUser getAdminUser(){

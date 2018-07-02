@@ -58,7 +58,7 @@ public class Topic implements Serializable {
     private String upIds;
 
     @Column(columnDefinition = "text")
-    private String sownIds;
+    private String downIds;
 
     @Column(columnDefinition = "DOUBLE DEFAULT 0/0")
     private Double weight;

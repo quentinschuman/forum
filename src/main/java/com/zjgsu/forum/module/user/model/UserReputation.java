@@ -7,7 +7,7 @@ package com.zjgsu.forum.module.user.model;
  * Date: 2018/6/26
  * Time: 21:30
  */
-public enum NameReputation {
+public enum UserReputation {
 
     UP_COMMENT("评论被点赞", 10),
     UP_TOPIC("话题被点赞", 5),
@@ -18,7 +18,7 @@ public enum NameReputation {
     private String name;
     private Integer reputation;
 
-    NameReputation(String name, Integer reputation) {
+    UserReputation(String name, Integer reputation) {
         this.name = name;
         this.reputation = reputation;
     }

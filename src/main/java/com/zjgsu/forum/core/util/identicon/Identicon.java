@@ -1,8 +1,16 @@
 package com.zjgsu.forum.core.util.identicon;
 
 import com.google.common.base.Preconditions;
+import com.qiniu.common.QiniuException;
+import com.qiniu.common.Zone;
+import com.qiniu.http.Response;
+import com.qiniu.storage.Configuration;
+import com.qiniu.storage.UploadManager;
+import com.qiniu.storage.model.DefaultPutRet;
+import com.qiniu.util.Auth;
 import com.zjgsu.forum.config.SiteConfig;
 import com.zjgsu.forum.core.util.HashUtil;
+import com.zjgsu.forum.core.util.JsonUtil;
 import com.zjgsu.forum.core.util.StrUtil;
 import com.zjgsu.forum.core.util.identicon.generator.IBaseGenartor;
 import com.zjgsu.forum.core.util.identicon.generator.impl.MyGenerator;
@@ -13,7 +21,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.imageio.ImageIO;
-import javax.security.auth.login.Configuration;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;

@@ -54,8 +54,8 @@ public class LogService {
     }
 
     public Log save(LogEventEnum event, Integer userId, String target, Integer targetId, String before, String after, Topic topic){
-        Map<String,Integer> params = Maps.newHashMap();
-        String desc = freemarkerUtil.format(logEventConfig.getTemplate().get(event.getName()),params);
+        Map<String,Object> params = Maps.newHashMap();
+        String desc = freemarkerUtil.format(logEventConfig.getTemplate().get(event.getName()), params);
         Log log = new Log();
         log.setEvent(event.getEvent());
         log.setEnentDescription(desc);

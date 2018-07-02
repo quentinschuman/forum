@@ -1,5 +1,11 @@
 package com.zjgsu.forum.core.util;
 
+import com.qiniu.common.Zone;
+import com.qiniu.http.Response;
+import com.qiniu.storage.Configuration;
+import com.qiniu.storage.UploadManager;
+import com.qiniu.storage.model.DefaultPutRet;
+import com.qiniu.util.Auth;
 import com.zjgsu.forum.config.SiteConfig;
 import com.zjgsu.forum.module.attachment.model.Attachment;
 import com.zjgsu.forum.module.attachment.service.AttachmentService;

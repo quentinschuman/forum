@@ -50,9 +50,8 @@ public class UserService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    public User createUser(String username,String password,String email,String avatar,String url,String bio){
-        if (!StringUtils.isEmpty(email) && email.equals("null"))
-            email = null;
+    public User createUser(String username, String password, String email, String avatar, String url, String bio) {
+        if(!StringUtils.isEmpty(email) && email.equals("null")) email = null;
         User user = new User();
         user.setEmail(email);
         user.setUsername(username);
@@ -64,75 +63,118 @@ public class UserService {
         user.setUrl(url);
         user.setBio(bio);
         user.setReputation(0);
+        // 默认邮件打开
         user.setCommentEmail(true);
         user.setReplyEmail(true);
         return this.save(user);
     }
 
-    public Page<User> findByReputation(int p,int size){
-        Sort sort = new Sort(Sort.Direction.DESC,"reputation");
-        Pageable pageable = PageRequest.of(p-1,size,sort);
+    /**
+     * search user by log desc
+     *
+     * @param p
+     * @param size
+     * @return
+     */
+    public Page<User> findByReputation(int p, int size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "reputation");
+        Pageable pageable = PageRequest.of(p - 1, size, sort);
         return userRepository.findAll(pageable);
     }
 
-    public User findById(int id){
+    public User findById(int id) {
         return userRepository.findById(id);
     }
 
-    public User findByUsername(String username){
+    /**
+     * 根据用户名判断是否存在
+     *
+     * @param username
+     * @return
+     */
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-    public User findByEmail(String email){
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    private User save(User user) {
-
+    public User save(User user) {
         user = userRepository.save(user);
-        //redis
-        ValueOperations<String,String> stringStringValueOperations = stringRedisTemplate.opsForValue();
+        // 更新redis里的数据
+        ValueOperations<String, String> stringStringValueOperations = stringRedisTemplate.opsForValue();
         stringStringValueOperations.set(user.getToken(), JsonUtil.objectToJson(user));
         return user;
     }
 
-    public Page<User> pageUser(int p,int size){
-        Sort sort = new Sort(Sort.Direction.DESC,"inTime");
-        Pageable pageable = PageRequest.of(p-1,size,sort);
+    /**
+     * 分页查询用户列表
+     *
+     * @param p
+     * @param size
+     * @return
+     */
+    public Page<User> pageUser(int p, int size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "inTime");
+        Pageable pageable = PageRequest.of(p - 1, size, sort);
         return userRepository.findAll(pageable);
     }
 
-    public void blockUser(Integer id){
+    /**
+     * 禁用用户
+     *
+     * @param id
+     */
+    public void blockUser(Integer id) {
         User user = findById(id);
         user.setBlock(true);
         save(user);
     }
 
-    public void unBlockUser(Integer id){
+    /**
+     * 用户解禁
+     *
+     * @param id
+     */
+    public void unBlockUser(Integer id) {
         User user = findById(id);
         user.setBlock(false);
         save(user);
     }
 
-    public User refreshToken(User user){
+    public User refreshToken(User user) {
         user.setToken(UUID.randomUUID().toString());
         return this.save(user);
     }
 
-    public User findByToken(String token){
+    /**
+     * 根据令牌查询用户
+     *
+     * @param token
+     * @return
+     */
+    public User findByToken(String token) {
         return userRepository.findByToken(token);
     }
 
-    public void deleteById(Integer id){
+    public void deleteById(Integer id) {
+        // 删除用户的日志
         logService.deleteByUserId(id);
+        // 删除用户的通知
         notificationService.deleteByTargetUser(id);
+        // 删除用户的收藏
         collectService.deleteByUserId(id);
+        // 删除用户的评论
         commentService.deleteByUserId(id);
+        // 删除用户的话题
         topicService.deleteByUserId(id);
+        // 删除用户
         userRepository.deleteById(id);
     }
 
-    public void deleteAllRedisUser(){
+    // 删除所有后台用户存在redis里的数据
+    public void deleteAllRedisUser() {
         List<User> users = userRepository.findAll();
         users.forEach(user -> stringRedisTemplate.delete(user.getToken()));
     }

@@ -34,7 +34,7 @@ public class CodeService {
     }
 
     public String genEmailCode(String email){
-        String genCode = StrUtil.randomString();
+        String genCode = StrUtil.randomString(6);
         Code code = findByEmailAndCodeAndType(email,genCode,CodeEnum.EMAIL);
         if (code != null){
             return genEmailCode(email);
