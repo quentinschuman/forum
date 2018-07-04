@@ -37,6 +37,10 @@ public class Topic implements Serializable {
     private Date inTime;
 
     @JsonFormat(pattern = Constants.DATETIME_FORMAT)
+    @Column(name = "modify_time")
+    private Date modifyTime;
+
+    @JsonFormat(pattern = Constants.DATETIME_FORMAT)
     @Column(name = "last_comment_time")
     private Date lastCommentTime;
 
@@ -60,7 +64,7 @@ public class Topic implements Serializable {
     @Column(columnDefinition = "text")
     private String downIds;
 
-    @Column(columnDefinition = "DOUBLE DEFAULT 0/0")
+    @Column(columnDefinition = "DOUBLE DEFAULT 0.0")
     private Double weight;
 
     private String tag;
