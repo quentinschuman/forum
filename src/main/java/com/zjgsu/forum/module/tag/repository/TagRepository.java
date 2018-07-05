@@ -15,8 +15,11 @@ import java.util.List;
  * Time: 21:31
  */
 @Repository
-public interface TagRepository extends JpaRepository<Tag,Integer> {
+public interface TagRepository extends JpaRepository<Tag, Integer> {
+
     Tag findByName(String name);
-    @Query(value = "select t from Tag t,TopicTag tt where t.id = tt.tagId and tt.topicId = ?!")
+
+    @Query(value = "select t from Tag t, TopicTag tt where t.id = tt.tagId and tt.topicId = ?1")
     List<Tag> findByTopicId(Integer topicId);
+
 }

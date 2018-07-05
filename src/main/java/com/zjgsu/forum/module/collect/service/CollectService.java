@@ -41,53 +41,65 @@ public class CollectService {
     @Autowired
     private NotificationService notificationService;
 
-    public Page<Map> findByUserId(int p,int size,Integer userId){
-        Sort sort = new Sort(Sort.Direction.DESC,"inTime");
-        Pageable pageable = PageRequest.of(p-1,size,sort);
-        return collectRepository.findByUserId(userId,pageable);
+    public Page<Map> findByUserId(int p, int size, Integer userId) {
+        Sort sort = new Sort(Sort.Direction.DESC, "inTime");
+        Pageable pageable = PageRequest.of(p - 1, size, sort);
+        return collectRepository.findByUserId(userId, pageable);
     }
 
-    public long countByUserId(Integer userId){
+    public long countByUserId(Integer userId) {
         return collectRepository.countByUserId(userId);
     }
 
-    public long countByTopicId(Integer topicId){
-        return collectRepository.countByUserId(topicId);
+    public long countByTopicId(Integer topicId) {
+        return collectRepository.countByTopicId(topicId);
     }
 
-    public Collect findByUserIdAndTopicId(Integer userId,Integer topicId){
-        return collectRepository.findByUserIdAndTopicId(userId,topicId);
+    public Collect findByUserIdAndTopicId(Integer userId, Integer topicId) {
+        return collectRepository.findByUserIdAndTopicId(userId, topicId);
     }
 
-    public Collect save(Collect collect){
+    public Collect save(Collect collect) {
         return collectRepository.save(collect);
     }
 
-    public Collect createCollect(Topic topic, Integer userId){
+    public Collect createCollect(Topic topic, Integer userId) {
         Collect collect = new Collect();
         collect.setInTime(new Date());
         collect.setTopicId(topic.getId());
         collect.setUserId(userId);
         this.save(collect);
-
-        if (!topic.getUserId().equals(userId)) {
+        // 通知
+        if(!topic.getUserId().equals(userId)) {
             notificationService.sendNotification(userId, topic.getUserId(), NotificationEnum.COLLECT, topic.getId(), null);
         }
-            logService.save(LogEventEnum.COLLECT_TOPIC,collect.getUserId(), LogTargetEnum.COLLECT.name(),collect.getId(),null, JsonUtil.objectToJson(collect),topic);
-            return collect;
+        // 日志
+        logService.save(LogEventEnum.COLLECT_TOPIC, collect.getUserId(), LogTargetEnum.COLLECT.name(), collect.getId(), null, JsonUtil.objectToJson(collect), topic);
+        return collect;
     }
 
-    public void deleteById(int id){
+    public void deleteById(int id) {
         Collect collect = collectRepository.findById(id).get();
+        // 日志
         Topic topic = topicService.findById(collect.getTopicId());
-        logService.save(LogEventEnum.DELETE_COLLECT_TOPIC,collect.getUserId(),LogTargetEnum.COLLECT.name(),collect.getId(),JsonUtil.objectToJson(collect),null,topic);
+        logService.save(LogEventEnum.DELETE_COLLECT_TOPIC, collect.getUserId(), LogTargetEnum.COLLECT.name(), collect.getId(), JsonUtil.objectToJson(collect), null, topic);
         collectRepository.deleteById(id);
     }
 
+    /**
+     * 用户被删除了，删除对应的所有收藏记录
+     * 不做日志，原因 {@link TopicService#deleteByUserId(Integer)}
+     * @param userId
+     */
     public void deleteByUserId(Integer userId) {
         collectRepository.deleteByUserId(userId);
     }
 
+    /**
+     * 话题被删除了，删除对应的所有收藏记录
+     *
+     * @param topicId
+     */
     public void deleteByTopicId(Integer topicId) {
         collectRepository.deleteByTopicId(topicId);
     }

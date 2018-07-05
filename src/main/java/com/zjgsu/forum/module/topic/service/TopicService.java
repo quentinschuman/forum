@@ -34,6 +34,7 @@ import javax.persistence.criteria.Predicate;
 import javax.transaction.Transactional;
 import java.util.*;
 
+
 /**
  * Created by IntelliJ IDEA.
  * ProjectName: forum
@@ -44,6 +45,7 @@ import java.util.*;
 @Service
 @Transactional
 public class TopicService {
+
     @Autowired
     private TopicRepository topicRepository;
     @Autowired
@@ -308,4 +310,5 @@ public class TopicService {
         };
         return topicRepository.findAll(specification);
     }
+
 }
